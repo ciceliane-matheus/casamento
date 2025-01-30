@@ -94,8 +94,49 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 const API_URL = "https://script.google.com/macros/s/AKfycbxh_2M7u_3EPU0VZtGmVn23krGbhwAOXhrX4edFsn1nwU2spSVBOSI0RF-d1pL6ZetmRg/exec"; // Substitua pela URL gerada no Apps Script
+let nomeSelecionado = "";
+let convidados = [];
+
+// Buscar nomes diretamente da API do Google Sheets
+fetch(API_URL + "?action=get")
+    .then(response => response.json())
+    .then(data => {
+        convidados = data;
+    })
+    .catch(error => console.error("Erro ao carregar convidados:", error));
+
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+document.getElementById("search").addEventListener("input", function () {
+    const searchTerm = this.value.toLowerCase();
+    const resultsList = document.getElementById("results");
+    resultsList.innerHTML = "";
+    nomeSelecionado = "";
+    document.getElementById("confirm").style.display = "none";
+
+    if (searchTerm) {
+        const filteredNames = convidados.filter(nome => nome.toLowerCase().includes(searchTerm));
+        filteredNames.forEach(nome => {
+            const li = document.createElement("li");
+            li.textContent = nome;
+            li.onclick = function () {
+                nomeSelecionado = nome;
+                document.getElementById("search").value = nome;
+                resultsList.innerHTML = "";
+                document.getElementById("confirm").style.display = "block";
+            };
+            resultsList.appendChild(li);
+        });
+    }
+});
+
 document.getElementById("confirm").addEventListener("click", function () {
     if (nomeSelecionado) {
         fetch(API_URL, {
@@ -114,6 +155,6 @@ document.getElementById("confirm").addEventListener("click", function () {
                 document.getElementById("message").textContent = "Erro ao confirmar. Tente novamente.";
             }
         })
-        .catch(error => console.error("Erro:", error));
+        .catch(error => console.error("Erro ao confirmar presença:", error));
     }
 });
