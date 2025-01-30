@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Função para buscar o convidado no Firebase
+// Função para buscar convidados no Firebase
 async function searchGuest() {
     const name = document.getElementById("guestSearch").value.trim().toLowerCase();
     const guestInfo = document.getElementById("guestInfo");
@@ -102,15 +102,19 @@ async function searchGuest() {
         return;
     }
 
-    // Exibe um indicador de carregamento enquanto busca os dados
+    // Exibe um indicador de carregamento
     guestInfo.innerHTML = "<p>🔍 Buscando...</p>";
 
     try {
-        // Acessa os dados no Firebase
+        // Tenta buscar convidados
         const snapshot = await database.ref("convidados").once("value");
         const convidados = snapshot.val();
 
-        // Verifica se o nome digitado está na lista
+        if (!convidados) {
+            guestInfo.innerHTML = "<p>⚠️ Nenhum convidado cadastrado.</p>";
+            return;
+        }
+
         let foundGuest = null;
         for (const key in convidados) {
             if (convidados[key].nome.toLowerCase() === name) {
@@ -130,7 +134,7 @@ async function searchGuest() {
         }
     } catch (error) {
         console.error("Erro ao buscar convidados:", error);
-        guestInfo.innerHTML = "<p>❌ Erro ao buscar os dados. Tente novamente.</p>";
+        guestInfo.innerHTML = "<p>❌ Erro ao conectar-se ao servidor. Tente novamente.</p>";
     }
 }
 
