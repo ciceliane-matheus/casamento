@@ -1,0 +1,922 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Lieselotte';
+    src: url('Fontes/Lieselotte-Personal.ttf.ttf') format('truetype'),
+         url('Fontes/Lieselotte-Personal.otf.otf') format('opentype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Lieselotte';
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between; /* Espaço entre logo e navegação */
+    align-items: center; /* Centraliza verticalmente os itens */
+    background-color: white;
+    box-sizing: border-box;
+    margin: 0; /* Remove margens extras */
+    padding: 0rem 5rem 0rem 5rem; /* Reduz o espaçamento interno do header */
+
+}
+
+.logo-container {
+    padding: 0;
+    margin: 0;
+}
+
+.logo {
+    width: 90px; /* Ajuste o tamanho da logo */
+    height: 90px;
+    object-fit: contain; /* Mantém proporções corretas */
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul {
+    align-items: center;
+    list-style: none;
+    flex-shrink: 0;
+    padding: 96 42;
+    border-radius: 16px;
+    display: flex;
+    justify-content: right;
+    gap: 2rem;
+}
+
+header nav ul li {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    display: flex;
+    gap: 1.5rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav ul li a {
+    color: #000080; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 16px;
+    padding: 0.5rem 1rem; /* Espaçamento interno para criar o retângulo */
+    border: 2px; /* Borda em volta do link */
+    border-radius: 8px; /* Bordas arredondadas (opcional) */
+    transition: all 0.3s; /* Suaviza as mudanças de estilo */
+    display: inline-block; /* Garante que o link respeite o tamanho do padding e da borda */
+    text-align: center;
+}
+
+header nav ul li a:hover {
+    color: white; /* Altere a cor ao passar o mouse */
+    background-color: #000080;
+}
+
+.banner {
+    position: relative; /* Permite posicionar o retângulo dentro deste container */
+    width: 100%;
+    height: 110vh;
+    display: flex;
+    /*justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    overflow: hidden; /* Garante que partes extras não apareçam */
+}
+
+.slideshow-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.banner img {
+    width: 100%; /* Faz a imagem ocupar a largura total */
+    height: 100%; /* Mantém a proporção da imagem */
+    left: 0;
+    right: 0;
+    object-fit: cover; /* Garante que a imagem preencha o espaço */
+    position: center;
+}
+
+.banner .overlay {
+    position: absolute; /* Posiciona sobre a imagem */
+    left: 1;
+    right: 0;
+    width: 35%; /* Cobre toda a largura */
+    height: 100%; /* Cobre toda a altura */
+    background-image: url(Imagens/blue-watercolor-stain-white-background\ 1.png);    pointer-events: none; /* Garante que o overlay não bloqueie interações */
+    background-position: center; /* Centraliza a imagem dentro do overlay */
+
+}
+
+.banner-informacao {
+    position: absolute; /* Posiciona o retângulo sobre a imagem */
+    top: 72%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta a posição para o centro exato */
+    width: 500px;
+    height: 550px;    ;
+    padding: 2rem; /* Espaçamento interno para o texto */
+    background: rgba(255, 255, 255, 0); /* Sem fundo */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto dentro do retângulo */
+    border-radius: 8px; /* Opcional: bordas arredondadas */
+}
+
+.banner-informacao h1 {
+    font-size: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-weight: 400; /* Espessura normal para as labels */
+}
+
+.linha-horizontal {
+    border: none; /* Remove bordas padrão */
+    border-top: 1px solid #000080; /* Cria a linha */
+    width: 100%; /* A linha ocupa toda a largura do retângulo */
+    margin: 2rem 0; /* Espaçamento em cima e embaixo da linha */
+}
+
+.contagem {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    display: flex;
+    flex-direction: column; /* Alinha os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    padding: 2rem; /* Espaçamento interno */
+    background-color: white; /* Fundo azul */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo do título */
+.titulo-contagem {
+    font-size: 1.5rem; /* Tamanho do texto do título */
+    margin-bottom: 0.5rem; /* Espaçamento abaixo do título */
+    color: #000080; /* Cor do texto */
+}
+
+/* Linha horizontal */
+.linha-contagem {
+    width: 30%; /* Largura da linha */
+    height: 3px; /* Espessura da linha */
+    background-color: #000080; /* Cor da linha */
+    margin: 1rem auto; /* Espaçamento em cima e embaixo */
+}
+
+/* Estilo dos números */
+.numeros {
+    display: flex; /* Alinha os números lado a lado */
+    justify-content: center; /* Centraliza os números horizontalmente */
+    gap: 3rem; /* Espaçamento entre os blocos */
+    margin-top: 1rem;
+}
+
+.bloco-contagem {
+    display: flex;
+    flex-direction: column; /* Organiza número e label verticalmente */
+    align-items: center; /* Centraliza dentro do bloco */
+    justify-content: center;
+    padding: 1rem; /* Espaçamento interno */
+    border: 2px solid #000080; /* Borda ao redor do bloco */
+    border-radius: 10px; /* Cantos arredondados */
+    width: 115px; /* Define uma largura fixa */
+    height: 100px; /* Define uma altura fixa */
+    background-color: #000080; /* Cor de fundo */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.numero {
+    font-size: 2rem; /* Tamanho dos números */
+    font-weight: 600;
+    color: white; /* Cor dos números */
+}
+
+.label {
+    font-size: 0.8rem; /* Tamanho das labels */
+    margin-top: 0.5rem; /* Espaçamento acima das labels */
+    color: white; /* Cor das labels */
+    text-transform: uppercase; /* Deixa o texto em maiúsculas */
+    letter-spacing: 0.1rem; /* Espaçamento entre letras */
+    font-weight: 400; /* Espessura normal para as labels */
+}
+
+.separador {
+    width: 100%;
+    height: 200px; /* Aumenta a altura para cobrir o final e o início das seções */
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 1) 0%,  /* Branco (começo da transição) */
+        rgba(227, 242, 253, 1) 40%,  /* Azul mais forte no meio */
+        rgba(227, 242, 253, 1) 50%,  /* Mantém azul um pouco mais */
+        rgba(255, 255, 255, 1) 100% /* Branco no final para fusão */
+    );
+}
+
+/* Seção Sobre */
+#sobre {
+    text-align: center;
+    background-color: white;
+    padding: 50px 20px;
+    position: relative; /* Permite posicionar a linha corretamente */
+}
+
+/* Linha vertical fixa na esquerda */
+.linha-sobre {
+    position: absolute;
+    left: 5%; /* Ajuste a posição da linha conforme necessário */
+    bottom: 6%;
+    width: 2px;
+    height: 80%;
+    background-color: #e5e5e5; /* Cor azul escura */
+}
+
+/* Título da seção */
+.titulo-sobre {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    font-size: 1.5rem;
+    color: #000080;
+    margin-bottom: 40px;
+}
+
+/* Container geral da história */
+.historia-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Cada bloco da história */
+.historia-bloco {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1000px;
+    gap: 40px;
+    position: relative;
+}
+
+/* Apenas o segundo bloco terá a imagem à direita e o texto à esquerda */
+.historia-bloco.inverso {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1000px;
+    gap: 40px; /* Espaço entre a imagem e o texto */
+}
+
+/* Imagens dentro dos blocos - Retangulares */
+.imagem-historia {
+    width: 50%;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Bloco de texto */
+.texto-historia {
+    width: 50%;
+    text-align: justify;
+    font-size: 1rem;
+    color: #333;
+}
+
+.texto-historia p {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    color: #000080;
+    margin-bottom: 10px;
+    font-weight: 400; /* Espessura normal para as labels */
+}
+
+.texto-italico {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    font-weight: 400; /* Espessura normal para as labels */
+    font-style: italic;
+    color: #ce6a84;
+}
+
+/* Título do texto */
+.texto-historia h3 {
+    font-size: 5.5rem;
+    color: #000080;
+    margin-bottom: 10px;
+    font-weight: 400; /* Espessura normal para as labels */
+}
+
+#cerimonia {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    text-align: center;
+    height: auto;
+    padding: 50px 0px;
+    background-color: #f5f5f5;
+}
+
+.aviso-traje {
+    background-color: #000080;
+    color: white;
+    padding: 20px;
+    font-size: 1rem;
+    text-align: center;
+    width: 150%;
+    height: 35vh;
+}
+
+.aviso-texto {
+    font-size: 1rem;
+    margin-top: 55px;
+    margin-bottom: 115px;
+}
+
+.bloco-restrito {
+    background-color: white;
+    padding: 80px;
+    margin-top: -30px; /* Sobreposição no azul */
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulo-restrito {
+    font-size: 1rem;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.bolas-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.bola {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.conteudo-cerimonia {
+    display: flex;
+    flex-direction: column; /* Organiza título e grid em coluna */
+    align-items: center; /* Centraliza os itens */
+    max-width: 1200px; /* Set a maximum width */
+    margin: 0 auto; 
+}
+
+.titulo-cerimonia {
+    font-size: 1.5rem; /* Tamanho do texto do título */
+    margin-bottom: 3rem; /* Espaçamento abaixo do título */
+    color: #000080; /* Cor do texto */
+    text-align: center;
+}
+
+.bloco-cerimonia {
+    display: flex;
+    flex-wrap: wrap; /* Permite ajuste em telas menores */
+    justify-content: center;
+    margin-top: 180px;
+    height: auto;
+}
+
+.traje-container {
+    height: auto; /* Altura ajustável conforme o conteúdo */
+    text-align: center;
+    background-color: #e5e5e5;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.traje-titulo {
+    font-size: 1.5rem;
+    color: #000080;
+    margin-bottom: 10px;
+}
+
+.traje-descricao {
+    font-size: 1rem;
+    color: #000080;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.traje-bloco {
+    background-color: white;
+    padding: 80px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.bl-cr1 {
+    flex: 0 0 auto;
+    width: 300px;
+    max-width: 350px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transform: scale(0.85);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0.6;
+}
+
+.imagem-slide {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* O bloco ativo (central) */
+.bl-cr1.active {
+    transform: scale(1.1); /* Destaca o card ativo */
+    opacity: 1;
+
+}
+
+/* Título de cada paleta */
+.titulo-paleta {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #000080;
+}
+
+/* Container das bolas */
+/* Animação suave ao trocar os blocos */
+.bolas-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+
+/* Criando as bolas coloridas */
+.bola {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+/* Descrição abaixo das bolas */
+.descricao-paleta {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.traje-bloco h4 {
+    font-size: 1.2rem;
+    color: #000080;
+    margin-bottom: 5px;
+}
+
+.traje-bloco ul {
+    list-style: none;
+    padding: 0;
+}
+
+.traje-bloco li {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.traje-dica {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+.paletas-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Ajusta os botões para ficarem nas laterais corretas */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+#lista-de-presentes {
+    text-align: center;
+    background-color: white;
+    padding: 60px 20px; /* Aumentei o padding vertical para melhor separação */
+    color: #000080;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+#lista-de-presentes p {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+}
+
+#lista-de-presentes h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 30px; /* Aumentei o espaço abaixo do h1 */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5; /* Melhor legibilidade */
+}
+
+.titulo-lista {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    font-size: 1.5rem; /* Tamanho do texto do título */
+    margin-bottom: 0.5rem; /* Espaçamento abaixo do título */
+    color: #000080; /* Cor do texto */
+}
+
+.presentes-container {
+    display: flex;
+    justify-content: center; /* Alinha os itens horizontalmente */
+    flex-wrap: wrap; /* Permite quebra de linha quando necessário */
+    gap: 30px; /* Aumentei o espaçamento entre os itens */
+    margin-top: 30px; /* Deixei mais espaço acima da lista */
+}
+
+/* Ajuste no espaçamento dos itens */
+.presente-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px; /* Mais espaço interno */
+    text-align: center;
+    width: 100%;
+    max-width: 220px; /* Aumentei um pouco o tamanho */
+}
+
+/* Ajuste na imagem */
+.presente-item img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px; /* Aumentei o espaço abaixo da imagem */
+}
+
+/* Melhorando espaçamento dos títulos */
+.presente-item h3 {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    font-size: 1.4rem;
+    margin: 10px 0 5px 0; /* Ajuste no espaçamento superior e inferior */
+}
+
+/* Ajuste no espaçamento do texto */
+.presente-item p {
+    font-size: 1rem;
+    color: #004d60;
+    margin-bottom: 15px; /* Maior espaçamento antes do botão */
+}
+
+/* Melhorando espaçamento do botão */
+.presente-item button {
+    background-color: #004d60;
+    color: #ffffff;
+    padding: 12px 18px; /* Botão um pouco maior */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.presente-item button:hover {
+    background-color: #003847;
+}
+
+#recepcao {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+    background: linear-gradient(to bottom, #ffffff, #f5faff, #e0ebf7, #f5faff, white); /* Branco -> Azul -> Branco */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.titulo-recepcao1{
+font-size: 1.5rem; /* Tamanho do texto do título */
+margin-bottom: 3rem; /* Espaçamento abaixo do título */
+color: #000080; /* Cor do texto */
+text-align: center;
+}
+
+.recepcao-container {
+    max-width: 1200px; /* Aumenta a largura da seção */
+    margin: 0 auto;
+}
+
+/* Header da recepção */
+.recepcao-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    margin-bottom: 50px;
+}
+
+.imagem-recepcao {
+    width: 50%; /* Aumentando o tamanho da imagem */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.detalhes-recepcao {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    text-align: center; /* Centralizando o conteúdo */
+    width: 40%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-recepcao {
+    font-size: 1.8rem;
+    color: #000080;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.endereco-recepcao {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.icone-localizacao {
+    font-size: 2rem;
+    color: #000080;
+}
+
+/* Linha do tempo */
+.linha-tempo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 50px; /* Aumenta o espaçamento entre os eventos */
+    padding: 50px 0;
+}
+
+.linha-tempo::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 90%; /* Aumentando o comprimento da linha */
+    background-color: #000080;
+    left: 50%;
+    top: 6.5%;
+    transform: translateX(-50%);
+}
+
+.evento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+}
+
+.horario {
+    font-size: 3rem; /* Aumentando tamanho da fonte */
+    color: #000080;
+    width: 30%;
+    text-align: center;
+}
+
+.descricao {
+    font-size: 1.2rem; /* Aumentando tamanho da fonte */
+    color: #000080;
+    width: 30%;
+    text-align: center;
+}
+
+.icone-evento {
+    font-size: 2rem; /* Aumentando o tamanho da estrela */
+    color: #000080;
+    margin: 0 20px;
+}
+
+/* Estilização Geral */
+#rsvp {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 50px 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rsvp-container {
+    background: white;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rsvp-title {
+    font-size: 1.8rem;
+    color: #000080;
+    margin-bottom: 10px;
+}
+
+.rsvp-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Caixa de Pesquisa */
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    padding: 12px;
+    width: 65%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    background-color: #000080;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #0056b3;
+}
+
+/* Resultado da Pesquisa */
+.guest-info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.guest-info.hidden {
+    display: none;
+}
+
+.confirm-btn {
+    background-color: #008000;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.confirm-btn:hover {
+    background-color: #006400;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+}
+
+.modal-content h2 {
+    color: #000080;
+    font-size: 1.5rem;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .banner-informacao {
+        width: 80%;
+        padding: 1.5rem;
+    }
+
+    .banner-informacao h1 {
+        font-size: 2rem;
+    }
+
+    .banner-informacao p {
+        font-size: 1rem;
+    }
+}
+
+footer {
+    background-color: white;
+    color: #000080;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
