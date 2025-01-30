@@ -94,152 +94,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Configuração do Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyAI7KFY9-BUsqBVwNAThvxzlnd7Sny5w3Q",
-    authDomain: "lista-de-casamento-522c8.firebaseapp.com",
-    databaseURL: "https://lista-de-casamento-522c8-default-rtdb.firebaseio.com",
-    projectId: "lista-de-casamento-522c8",
-    storageBucket: "lista-de-casamento-522c8.appspot.com",
-    messagingSenderId: "97679461314",
-    appId: "1:97679461314:web:287affb90dfedd71d0e45b"
-};
+const convidados = ["Ana Silva", "Carlos Souza", "Fernanda Lima", "João Oliveira", "Maria Santos"];
+        let nomeSelecionado = "";
 
-// Inicializa Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+        function openPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
 
-// Exibe sugestões enquanto o usuário digita
-function showSuggestions() {
-    const input = document.getElementById("guestSearch").value.trim().toLowerCase();
-    const suggestionsList = document.getElementById("suggestionsList");
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
 
-    if (!input) {
-        suggestionsList.innerHTML = "";
-        suggestionsList.classList.add("hidden");
-        return;
-    }
+        document.getElementById("search").addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            const resultsList = document.getElementById("results");
+            resultsList.innerHTML = "";
+            nomeSelecionado = "";
+            document.getElementById("confirm").style.display = "none";
 
-    database.ref("convidados").once("value", (snapshot) => {
-        const convidados = snapshot.val();
-        if (!convidados) return;
-
-        const filteredGuests = Object.values(convidados).filter(guest => 
-            guest.nome && guest.nome.toLowerCase().includes(input)
-        );
-
-        suggestionsList.innerHTML = "";
-        suggestionsList.classList.remove("hidden");
-
-        filteredGuests.forEach(guest => {
-            const li = document.createElement("li");
-            li.textContent = guest.nome;
-            li.onclick = () => {
-                document.getElementById("guestSearch").value = guest.nome;
-                suggestionsList.innerHTML = "";
-                suggestionsList.classList.add("hidden");
-            };
-            suggestionsList.appendChild(li);
+            if (searchTerm) {
+                const filteredNames = convidados.filter(nome => nome.toLowerCase().includes(searchTerm));
+                filteredNames.forEach(nome => {
+                    const li = document.createElement("li");
+                    li.textContent = nome;
+                    li.onclick = function () {
+                        nomeSelecionado = nome;
+                        document.getElementById("search").value = nome;
+                        resultsList.innerHTML = "";
+                        document.getElementById("confirm").style.display = "block";
+                    };
+                    resultsList.appendChild(li);
+                });
+            }
         });
-    }).catch(error => {
-        console.error("Erro ao buscar sugestões:", error);
-    });
-}
 
-// Função para buscar convidados no Firebase
-async function searchGuest() {
-    const name = document.getElementById("guestSearch").value.trim().toLowerCase();
-    const guestInfo = document.getElementById("guestInfo");
-    const guestName = document.getElementById("guestName");
-    const guestFamily = document.getElementById("guestFamily");
-    const loader = document.getElementById("loader");
-
-    if (!name) {
-        alert("Digite um nome válido!");
-        return;
-    }
-
-    // Exibe loader durante a busca
-    loader.classList.remove("hidden");
-    guestInfo.classList.add("hidden");
-
-    try {
-        const snapshot = await database.ref("convidados").once("value");
-        const convidados = snapshot.val();
-
-        if (!convidados) {
-            loader.classList.add("hidden");
-            alert("Nenhum convidado cadastrado.");
-            return;
-        }
-
-        const foundGuest = Object.values(convidados).find(guest => 
-            guest.nome && guest.nome.toLowerCase() === name
-        );
-
-        loader.classList.add("hidden");
-
-        if (foundGuest) {
-            guestInfo.classList.remove("hidden");
-            guestName.textContent = `🎉 Olá, ${foundGuest.nome}!`;
-            guestFamily.textContent = foundGuest.acompanhantes 
-                ? `Seu grupo: ${foundGuest.acompanhantes.join(", ")}` 
-                : "Você está confirmado(a) individualmente.";
-        } else {
-            alert("Nome não encontrado.");
-        }
-    } catch (error) {
-        loader.classList.add("hidden");
-        console.error("Erro ao buscar convidados:", error);
-        alert("Erro ao conectar-se ao servidor. Verifique sua conexão.");
-    }
-}
-
-// Função para confirmar a presença
-async function confirmPresence() {
-    const name = document.getElementById("guestSearch").value.trim();
-    if (!name) {
-        alert("Busque seu nome primeiro!");
-        return;
-    }
-
-    try {
-        await database.ref(`convidados/${name}`).update({ confirmado: true });
-
-        document.getElementById("confirmationModal").classList.remove("hidden");
-        updateCounter();
-    } catch (error) {
-        console.error("Erro ao confirmar presença:", error);
-        alert("Erro ao confirmar presença.");
-    }
-}
-
-// Fecha o modal e reseta a busca
-function resetSearch() {
-    document.getElementById("confirmationModal").classList.add("hidden");
-    document.getElementById("guestSearch").value = "";
-    document.getElementById("guestInfo").classList.add("hidden");
-    document.getElementById("suggestionsList").classList.add("hidden");
-}
-
-// Atualiza o contador de confirmados
-async function updateCounter() {
-    try {
-        const snapshot = await database.ref("convidados").once("value");
-        const convidados = snapshot.val();
-        let confirmados = 0;
-
-        for (const key in convidados) {
-            if (convidados[key].confirmado) confirmados++;
-        }
-
-        document.getElementById("guestCounter").textContent = `🎯 Convidados Confirmados: ${confirmados}`;
-    } catch (error) {
-        console.error("Erro ao contar convidados confirmados:", error);
-    }
-}
-
-// Atualiza o contador ao carregar a página
-window.onload = function () {
-    updateCounter();
-};
+        document.getElementById("confirm").addEventListener("click", function () {
+            if (nomeSelecionado) {
+                document.getElementById("message").textContent = `${nomeSelecionado}, sua presença foi confirmada! 🎉`;
+                document.getElementById("confirm").style.display = "none";
+            }
+        });

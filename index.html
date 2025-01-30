@@ -6,10 +6,10 @@
     <title>Ciceliane e Matheus</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-    
 </head>
 <body>
     <header>
@@ -24,7 +24,7 @@
                 <li><a href="#cerimonia">Cerimônia</a></li>
                 <li><a href="#recepcao">Recepção</a></li>
                 <li><a href="#lista-de-presentes">Lista de Presentes</a></li>
-                <li><a href="#rsvp">Confirmação</a></li>
+                <li><a href="#rsvp">Confirmar Presença</a></li>
             </ul>
         </nav>
     </header>
@@ -123,12 +123,12 @@
                     <div class="bloco-restrito">
                         <h3 class="titulo-restrito">Evite utilizar as seguintes cores de vestimentas:</h3>
                         <div class="bolas-container">
+                            <div class="bola" style="background-color: white;"></div>
+                            <div class="bola" style="background-color: #000080;"></div>
                             <div class="bola" style="background-color: #7E8484;"></div>
                             <div class="bola" style="background-color: #FFA0A0;"></div>
                             <div class="bola" style="background-color: #D9D9D9;"></div>
-                            <div class="bola" style="background-color: #93CBFF;"></div>
-                            <div class="bola" style="background-color: #000080;"></div>
-                            <div class="bola" style="background-color: white; border: 1px solid #ccc;"></div>
+                            <div class="bola" style="background-color: #93CBFF; border: 1px solid #ccc;"></div>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                                 <div class="bolas-container">
                                     <div class="bola" style="background-color: white;"></div>
                                 </div>
-                                <p class="descricao-paleta">Os noivos deverão ter exclusividade destas cores. Quem se opor tá desconvidado 😆</p>
+                                <p class="descricao-paleta">Branco</p>
                             </div>
         
                             <div class="bl-cr1">
@@ -155,7 +155,7 @@
                                 <div class="bolas-container">
                                     <div class="bola" style="background-color: #000080;"></div>
                                 </div>
-                                <p class="descricao-paleta">Cores frescas e modernas.</p>
+                                <p class="descricao-paleta">Azul Marinho</p>
                             </div>
         
                             <div class="bl-cr1">
@@ -219,11 +219,17 @@
                     <div class="detalhes-recepcao">
                         <h2 class="titulo-recepcao">O grande dia!</h2>
                         <p class="endereco-recepcao">
-                            Nº 450, Vila Tredecim - Tarumã Açu<br>Manaus - AM
+                            Chácara Monte Rey<br>Nº 450, Vila Tredecim - Tarumã Açu<br>Manaus - AM
                         </p>
-                        <div class="icone-localizacao">📍</div>
+                        <div class="icone-localizacao">
+                            <i data-lucide="map-pin"></i>
+                        </div>
                     </div>
                 </div>
+
+                <script>
+                    lucide.createIcons(); // Ativa os ícones Lucide
+                </script>
         
                 <div class="linha-tempo">
                     <div class="evento">
@@ -273,21 +279,18 @@
         </section>
 
         <section id="rsvp">
-            <div class="rsvp-container">
+            <!--<div class="rsvp-container">
                 <h2 class="rsvp-title">Confirmação de Presença</h2>
                 <p class="rsvp-description">Digite seu nome para verificar sua presença na lista de convidados.</p>
         
-                <!-- Caixa de pesquisa -->
                 <div class="search-box">
                     <input type="text" id="guestSearch" placeholder="Digite seu nome..." autocomplete="off" oninput="showSuggestions()">
                     <button onclick="searchGuest()">🔍 Buscar</button>
-                    <ul id="suggestionsList" class="hidden"></ul> <!-- Sugestões de nomes -->
+                    <ul id="suggestionsList" class="hidden"></ul>
                 </div>
         
-                <!-- Loader -->
                 <div id="loader" class="hidden">🔄 Buscando...</div>
         
-                <!-- Resultado da busca -->
                 <div id="guestInfo" class="guest-info hidden">
                     <span class="close" onclick="resetSearch()">✖</span>
                     <h3 id="guestName"></h3>
@@ -295,11 +298,9 @@
                     <button class="confirm-btn" onclick="confirmPresence()">✅ Confirmar Presença</button>
                 </div>
         
-                <!-- Contador de Confirmados -->
                 <p id="guestCounter" class="guest-counter">🎯 Convidados Confirmados: 0</p>
             </div>
         
-            <!-- Modal de Confirmação -->
             <div id="confirmationModal" class="modal hidden">
                 <div class="modal-content">
                     <span class="close" onclick="resetSearch()">✖</span>
@@ -307,7 +308,18 @@
                     <p>Obrigado por confirmar sua presença. Nos vemos no grande dia! 🎊</p>
                 </div>
             </div>
-        </section>            
+        </section>-->
+        
+            <button class="btn-open" onclick="openPopup()">Confirme sua presença</button>
+            <div class="popup" id="popup">
+            <button class="close-btn" onclick="closePopup()">&times;</button>
+            <h3>Digite seu nome</h3>
+            <input type="text" id="search" placeholder="Digite seu nome...">
+            <ul id="results"></ul>
+            <button id="confirm" style="display: none;">Confirmar</button>
+            <p id="message"></p>
+        </section>
+    </div>
         
     </main>
 
