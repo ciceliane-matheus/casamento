@@ -38,6 +38,10 @@ const preloader = document.getElementById("preloader");
 
 // Adiciona um atraso de 3 segundos (3000ms)
 setTimeout(() => {
+    const modal = document.getElementById("confirmationModal");
+if (modal) {
+    modal.classList.add("hidden"); // Evita erro se modal não existir
+}
     preloader.classList.add("hidden");
 }, 3000); // Tempo em milissegundos
 });
@@ -90,81 +94,135 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Configuração do Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyAI7KFY9-BUsqBVwNAThvxzlnd7Sny5w3Q",
+    authDomain: "lista-de-casamento-522c8.firebaseapp.com",
+    databaseURL: "https://lista-de-casamento-522c8-default-rtdb.firebaseio.com",
+    projectId: "lista-de-casamento-522c8",
+    storageBucket: "lista-de-casamento-522c8.appspot.com",
+    messagingSenderId: "97679461314",
+    appId: "1:97679461314:web:287affb90dfedd71d0e45b"
+};
+
+// Inicializa Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+// Exibe sugestões enquanto o usuário digita
+function showSuggestions() {
+    const input = document.getElementById("guestSearch").value.trim().toLowerCase();
+    const suggestionsList = document.getElementById("suggestionsList");
+
+    if (!input) {
+        suggestionsList.innerHTML = "";
+        suggestionsList.classList.add("hidden");
+        return;
+    }
+
+    database.ref("convidados").once("value", (snapshot) => {
+        const convidados = snapshot.val();
+        if (!convidados) return;
+
+        const filteredGuests = Object.values(convidados).filter(guest => 
+            guest.nome && guest.nome.toLowerCase().includes(input)
+        );
+
+        suggestionsList.innerHTML = "";
+        suggestionsList.classList.remove("hidden");
+
+        filteredGuests.forEach(guest => {
+            const li = document.createElement("li");
+            li.textContent = guest.nome;
+            li.onclick = () => {
+                document.getElementById("guestSearch").value = guest.nome;
+                suggestionsList.innerHTML = "";
+                suggestionsList.classList.add("hidden");
+            };
+            suggestionsList.appendChild(li);
+        });
+    }).catch(error => {
+        console.error("Erro ao buscar sugestões:", error);
+    });
+}
+
 // Função para buscar convidados no Firebase
 async function searchGuest() {
     const name = document.getElementById("guestSearch").value.trim().toLowerCase();
     const guestInfo = document.getElementById("guestInfo");
     const guestName = document.getElementById("guestName");
     const guestFamily = document.getElementById("guestFamily");
+    const loader = document.getElementById("loader");
 
     if (!name) {
         alert("Digite um nome válido!");
         return;
     }
 
-    // Exibe um indicador de carregamento
-    guestInfo.innerHTML = "<p>🔍 Buscando...</p>";
+    // Exibe loader durante a busca
+    loader.classList.remove("hidden");
+    guestInfo.classList.add("hidden");
 
     try {
-        // Tenta buscar convidados
         const snapshot = await database.ref("convidados").once("value");
         const convidados = snapshot.val();
 
         if (!convidados) {
-            guestInfo.innerHTML = "<p>⚠️ Nenhum convidado cadastrado.</p>";
+            loader.classList.add("hidden");
+            alert("Nenhum convidado cadastrado.");
             return;
         }
 
-        let foundGuest = null;
-        for (const key in convidados) {
-            if (convidados[key].nome.toLowerCase() === name) {
-                foundGuest = convidados[key];
-                break;
-            }
-        }
+        const foundGuest = Object.values(convidados).find(guest => 
+            guest.nome && guest.nome.toLowerCase() === name
+        );
+
+        loader.classList.add("hidden");
 
         if (foundGuest) {
-            guestInfo.innerHTML = `
-                <h3>🎉 Olá, ${foundGuest.nome}!</h3>
-                <p>${foundGuest.acompanhantes ? "Você está vinculado a: " + foundGuest.acompanhantes.join(", ") : "Você está confirmado(a) individualmente."}</p>
-                <button class="confirm-btn" onclick="confirmPresence('${foundGuest.nome}')">Confirmar Presença</button>
-            `;
+            guestInfo.classList.remove("hidden");
+            guestName.textContent = `🎉 Olá, ${foundGuest.nome}!`;
+            guestFamily.textContent = foundGuest.acompanhantes 
+                ? `Seu grupo: ${foundGuest.acompanhantes.join(", ")}` 
+                : "Você está confirmado(a) individualmente.";
         } else {
-            guestInfo.innerHTML = "<p>❌ Nome não encontrado.</p>";
+            alert("Nome não encontrado.");
         }
     } catch (error) {
+        loader.classList.add("hidden");
         console.error("Erro ao buscar convidados:", error);
-        guestInfo.innerHTML = "<p>❌ Erro ao conectar-se ao servidor. Tente novamente.</p>";
+        alert("Erro ao conectar-se ao servidor. Verifique sua conexão.");
     }
 }
 
 // Função para confirmar a presença
-async function confirmPresence(nome) {
-    try {
-        // Atualiza o status de presença no Firebase
-        await database.ref(`convidados/${nome}`).update({ confirmado: true });
+async function confirmPresence() {
+    const name = document.getElementById("guestSearch").value.trim();
+    if (!name) {
+        alert("Busque seu nome primeiro!");
+        return;
+    }
 
-        // Mostra uma mensagem de sucesso
-        document.getElementById("confirmationModal").innerHTML = `
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2>✅ Presença Confirmada!</h2>
-                <p>Obrigado por confirmar sua presença. Nos vemos no grande dia! 🎉</p>
-            </div>
-        `;
+    try {
+        await database.ref(`convidados/${name}`).update({ confirmado: true });
+
         document.getElementById("confirmationModal").classList.remove("hidden");
-        updateCounter(); // Atualiza o contador após a confirmação
+        updateCounter();
     } catch (error) {
         console.error("Erro ao confirmar presença:", error);
+        alert("Erro ao confirmar presença.");
     }
 }
 
-// Fecha o modal
-function closeModal() {
+// Fecha o modal e reseta a busca
+function resetSearch() {
     document.getElementById("confirmationModal").classList.add("hidden");
+    document.getElementById("guestSearch").value = "";
+    document.getElementById("guestInfo").classList.add("hidden");
+    document.getElementById("suggestionsList").classList.add("hidden");
 }
 
-// Função para contar quantos convidados confirmaram presença
+// Atualiza o contador de confirmados
 async function updateCounter() {
     try {
         const snapshot = await database.ref("convidados").once("value");
@@ -172,9 +230,7 @@ async function updateCounter() {
         let confirmados = 0;
 
         for (const key in convidados) {
-            if (convidados[key].confirmado) {
-                confirmados++;
-            }
+            if (convidados[key].confirmado) confirmados++;
         }
 
         document.getElementById("guestCounter").textContent = `🎯 Convidados Confirmados: ${confirmados}`;
