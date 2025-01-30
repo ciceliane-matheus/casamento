@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Buscar convidado na lista
-const API_URL = "https://script.google.com/macros/s/AKfycbzfiW-JOV0_rrmml6A1ViNQ-JWgAycOfbaQXiAN7fnAoa1MY7ijviyaSrq_q_6OR_No9w/exec";  // Substitua pela URL do Web App publicado do Google Apps Script
+const API_URL = "https://script.google.com/macros/s/AKfycbw9bWK428fEX4HBzBACacSpw0AKkSAYSy1C2TbT1BMAStf-Kw6pPetS46Zj-8MaxKh4/exec";  // Substitua pela URL do Web App publicado do Google Apps Script
 let convidadosCache = [];
 
 // Exibir sugestões de nomes ao digitar
