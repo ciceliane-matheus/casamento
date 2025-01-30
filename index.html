@@ -277,13 +277,19 @@
                 <h2 class="rsvp-title">Confirmação de Presença</h2>
                 <p class="rsvp-description">Digite seu nome para verificar sua presença na lista de convidados.</p>
         
+                <!-- Caixa de pesquisa -->
                 <div class="search-box">
-                    <input type="text" id="guestSearch" placeholder="Digite seu nome..." autocomplete="off">
+                    <input type="text" id="guestSearch" placeholder="Digite seu nome..." autocomplete="off" oninput="showSuggestions()">
                     <button onclick="searchGuest()">🔍 Buscar</button>
+                    <ul id="suggestionsList" class="hidden"></ul> <!-- Sugestões de nomes -->
                 </div>
+        
+                <!-- Loader -->
+                <div id="loader" class="hidden">🔄 Buscando...</div>
         
                 <!-- Resultado da busca -->
                 <div id="guestInfo" class="guest-info hidden">
+                    <span class="close" onclick="resetSearch()">✖</span>
                     <h3 id="guestName"></h3>
                     <p id="guestFamily"></p>
                     <button class="confirm-btn" onclick="confirmPresence()">✅ Confirmar Presença</button>
@@ -296,12 +302,12 @@
             <!-- Modal de Confirmação -->
             <div id="confirmationModal" class="modal hidden">
                 <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
+                    <span class="close" onclick="resetSearch()">✖</span>
                     <h2>🎉 Presença Confirmada!</h2>
                     <p>Obrigado por confirmar sua presença. Nos vemos no grande dia! 🎊</p>
                 </div>
             </div>
-        </section>        
+        </section>            
         
     </main>
 

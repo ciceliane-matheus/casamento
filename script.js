@@ -91,23 +91,68 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Buscar convidado na lista
-const API_URL = "https://script.google.com/macros/s/AKfycbwuDg7s3-499UKMmi7I84DOwaogJeYvcdold3xzEPVetpaScxUktdZpwyDLiazR5ZAKrg/exec";  // Substitua pela URL do Web App publicado do Google Apps Script
+const API_URL = "https://script.google.com/macros/s/AKfycbzfiW-JOV0_rrmml6A1ViNQ-JWgAycOfbaQXiAN7fnAoa1MY7ijviyaSrq_q_6OR_No9w/exec";  // Substitua pela URL do Web App publicado do Google Apps Script
+let convidadosCache = [];
 
+// Exibir sugestões de nomes ao digitar
+async function showSuggestions() {
+    const input = document.getElementById("guestSearch").value.trim().toLowerCase();
+    const suggestionsList = document.getElementById("suggestionsList");
+
+    if (!input) {
+        suggestionsList.classList.add("hidden");
+        return;
+    }
+
+    if (convidadosCache.length === 0) {
+        try {
+            const response = await fetch(API_URL);
+            convidadosCache = await response.json();
+        } catch (error) {
+            console.error("Erro ao buscar convidados:", error);
+            return;
+        }
+    }
+
+    // Filtrar sugestões
+    const filtered = convidadosCache
+        .filter(guest => guest.nome.toLowerCase().includes(input))
+        .map(guest => `<li onclick="selectSuggestion('${guest.nome}')">${guest.nome}</li>`)
+        .join("");
+
+    if (filtered) {
+        suggestionsList.innerHTML = filtered;
+        suggestionsList.classList.remove("hidden");
+    } else {
+        suggestionsList.classList.add("hidden");
+    }
+}
+
+// Preencher campo ao clicar em uma sugestão
+function selectSuggestion(name) {
+    document.getElementById("guestSearch").value = name;
+    document.getElementById("suggestionsList").classList.add("hidden");
+}
+
+// Buscar convidado na lista
 async function searchGuest() {
     const name = document.getElementById("guestSearch").value.trim();
     const guestInfo = document.getElementById("guestInfo");
     const guestName = document.getElementById("guestName");
     const guestFamily = document.getElementById("guestFamily");
+    const loader = document.getElementById("loader");
 
     if (!name) {
         alert("Digite um nome válido!");
         return;
     }
 
-    try {
-        const response = await fetch(`${API_URL}?function=getConvidados`);
-        const convidados = await response.json();
+    loader.classList.remove("hidden"); // Mostrar loader
+    guestInfo.classList.add("hidden");
 
+    try {
+        const response = await fetch(API_URL);
+        const convidados = await response.json();
         const foundGuest = convidados.find(guest => guest.nome.toLowerCase() === name.toLowerCase());
 
         if (foundGuest) {
@@ -121,9 +166,13 @@ async function searchGuest() {
         }
     } catch (error) {
         console.error("Erro ao buscar convidados:", error);
+        alert("Erro ao conectar-se com o servidor. Tente novamente mais tarde.");
+    } finally {
+        loader.classList.add("hidden"); // Esconder loader
     }
 }
 
+// Confirmar presença
 async function confirmPresence() {
     const name = document.getElementById("guestSearch").value.trim();
     if (!name) {
@@ -132,36 +181,45 @@ async function confirmPresence() {
     }
 
     try {
-        const response = await fetch(`${API_URL}?function=confirmarPresenca&nome=${encodeURIComponent(name)}`);
+        const response = await fetch(`${API_URL}?nome=${encodeURIComponent(name)}`);
         const result = await response.json();
 
-        if (result.status === "confirmado") {
+        if (result && result.status === "confirmado") {
             document.getElementById("confirmationModal").classList.remove("hidden");
-            updateCounter();  // Atualiza o contador após confirmação
+            setTimeout(() => {
+                resetSearch();
+                updateCounter();
+            }, 2000);
         } else {
             alert("Erro ao confirmar presença.");
         }
     } catch (error) {
         console.error("Erro ao confirmar presença:", error);
+        alert("Erro ao conectar-se com o servidor. Tente novamente mais tarde.");
     }
 }
 
-function closeModal() {
+// Fechar todas as telas e resetar busca
+function resetSearch() {
+    document.getElementById("guestInfo").classList.add("hidden");
     document.getElementById("confirmationModal").classList.add("hidden");
+    document.getElementById("guestSearch").value = "";
 }
 
-// Atualiza o contador de confirmados
+// Atualizar contador de confirmados
 async function updateCounter() {
     try {
-        const response = await fetch(`${API_URL}?function=getContador`);
+        const response = await fetch(API_URL + "?function=getContador");
         const data = await response.json();
-        document.getElementById("guestCounter").textContent = `🎯 Convidados Confirmados: ${data.totalConfirmados}`;
+        if (data && data.totalConfirmados !== undefined) {
+            document.getElementById("guestCounter").textContent = `🎯 Convidados Confirmados: ${data.totalConfirmados}`;
+        }
     } catch (error) {
         console.error("Erro ao obter contador:", error);
     }
 }
 
-// Carrega o contador inicial ao abrir a página
+// Atualizar contador ao carregar a página
 window.onload = function () {
     updateCounter();
 };
