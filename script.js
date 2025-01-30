@@ -94,43 +94,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-const convidados = ["Ana Silva", "Carlos Souza", "Fernanda Lima", "João Oliveira", "Maria Santos"];
-        let nomeSelecionado = "";
 
-        function openPopup() {
-            document.getElementById("popup").style.display = "block";
-        }
-
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
-        }
-
-        document.getElementById("search").addEventListener("input", function () {
-            const searchTerm = this.value.toLowerCase();
-            const resultsList = document.getElementById("results");
-            resultsList.innerHTML = "";
-            nomeSelecionado = "";
-            document.getElementById("confirm").style.display = "none";
-
-            if (searchTerm) {
-                const filteredNames = convidados.filter(nome => nome.toLowerCase().includes(searchTerm));
-                filteredNames.forEach(nome => {
-                    const li = document.createElement("li");
-                    li.textContent = nome;
-                    li.onclick = function () {
-                        nomeSelecionado = nome;
-                        document.getElementById("search").value = nome;
-                        resultsList.innerHTML = "";
-                        document.getElementById("confirm").style.display = "block";
-                    };
-                    resultsList.appendChild(li);
-                });
-            }
-        });
-
-        document.getElementById("confirm").addEventListener("click", function () {
-            if (nomeSelecionado) {
+const API_URL = "https://script.google.com/macros/s/AKfycbxh_2M7u_3EPU0VZtGmVn23krGbhwAOXhrX4edFsn1nwU2spSVBOSI0RF-d1pL6ZetmRg/exec"; // Substitua pela URL gerada no Apps Script
+document.getElementById("confirm").addEventListener("click", function () {
+    if (nomeSelecionado) {
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ nome: nomeSelecionado })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
                 document.getElementById("message").textContent = `${nomeSelecionado}, sua presença foi confirmada! 🎉`;
                 document.getElementById("confirm").style.display = "none";
+            } else {
+                document.getElementById("message").textContent = "Erro ao confirmar. Tente novamente.";
             }
-        });
+        })
+        .catch(error => console.error("Erro:", error));
+    }
+});
