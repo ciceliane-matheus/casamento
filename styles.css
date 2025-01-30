@@ -786,7 +786,7 @@ text-align: center;
 .btn-open {
     padding: 15px 30px;
     font-size: 18px;
-    background: #000080;
+    background: #007bff;
     color: white;
     border: none;
     cursor: pointer;
@@ -795,16 +795,15 @@ text-align: center;
     margin-bottom: 20px;
 }
 .btn-open:hover {
-    background: white;
-    color: #000080;
+    background: #0056b3;
 }
 .popup {
     display: none;
     background: white;
-    padding: 50px;
+    padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 400px;
+    width: 350px;
     margin: auto;
     text-align: center;
     position: relative;
@@ -819,7 +818,7 @@ text-align: center;
     cursor: pointer;
 }
 .popup input {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
     font-size: 16px;
@@ -851,7 +850,7 @@ text-align: center;
 .popup button {
     padding: 10px 20px;
     font-size: 16px;
-    background: #000080;
+    background: #28a745;
     color: white;
     border: none;
     cursor: pointer;
@@ -859,7 +858,7 @@ text-align: center;
     border-radius: 5px;
 }
 .popup button:hover {
-    background: red;
+    background: #218838;
 }
 @keyframes fadeIn {
     from {
