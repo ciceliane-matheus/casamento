@@ -94,51 +94,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-let nomeSelecionado = "";
-let convidados = [];
-
-// Buscar lista de convidados do JSON
-fetch("convidados.json")
-    .then(response => response.json())
-    .then(data => {
-        convidados = data.confirmados;
+//Confirmação de Presença
+document.getElementById("rsvp-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+  
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyTwUmqqiK_mB4Cy01OENTKmY5n_SNB4MWgv7pBG7iaTq4QW_isHf_VhdazD_UaiqJqAw/exec"; // Substitua pela URL correta
+  
+    const data = {
+      nome: document.getElementById("nome").value,
+      presenca: document.getElementById("presenca").value,
+      acompanhantes: document.getElementById("acompanhantes").value || "0",
+      observacoes: document.getElementById("observacoes").value || ""
+    };
+  
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
     })
-    .catch(error => console.error("Erro ao carregar convidados:", error));
-
-function openPopup() {
-    document.getElementById("popup").style.display = "block";
-}
-
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
-
-document.getElementById("search").addEventListener("input", function () {
-    const searchTerm = this.value.toLowerCase();
-    const resultsList = document.getElementById("results");
-    resultsList.innerHTML = "";
-    nomeSelecionado = "";
-    document.getElementById("confirm").style.display = "none";
-
-    if (searchTerm) {
-        const filteredNames = convidados.filter(nome => nome.toLowerCase().includes(searchTerm));
-        filteredNames.forEach(nome => {
-            const li = document.createElement("li");
-            li.textContent = nome;
-            li.onclick = function () {
-                nomeSelecionado = nome;
-                document.getElementById("search").value = nome;
-                resultsList.innerHTML = "";
-                document.getElementById("confirm").style.display = "block";
-            };
-            resultsList.appendChild(li);
-        });
-    }
-});
-
-document.getElementById("confirm").addEventListener("click", function () {
-    if (nomeSelecionado) {
-        document.getElementById("message").textContent = `${nomeSelecionado}, sua presença foi confirmada! 🎉`;
-        document.getElementById("confirm").style.display = "none";
-    }
-});
+    .then(response => response.json())
+    .then(response => {
+      if (response.status === "sucesso") {
+        document.getElementById("rsvp-form").reset();
+        document.getElementById("mensagem").style.display = "block";
+        document.getElementById("mensagem").textContent = "Confirmação enviada com sucesso!";
+      } else {
+        alert("Erro ao enviar confirmação: " + response.mensagem);
+      }
+    })
+    .catch(error => {
+      console.error("Erro:", error);
+      alert("Erro ao conectar ao servidor.");
+    });
+  });  
