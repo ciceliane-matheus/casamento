@@ -19,7 +19,6 @@ const slides = document.querySelectorAll('.slideshow-container img');
 let currentSlide = 0;
 
 function showNextSlide() {
-    // Oculta a imagem atual
     slides[currentSlide].classList.remove('active');
 
     // Avança para a próxima imagem, voltando ao início se necessário
