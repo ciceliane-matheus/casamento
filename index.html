@@ -278,84 +278,96 @@
             </div>
         </section>
 
-        <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, push, get, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+<!-- Importando Firebase -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getDatabase, ref, push, get, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-        // Configuração do Firebase (Substitua pelos seus dados)
-        const firebaseConfig = {
-            apiKey: "AIzaSyDdIMWvEeuHVLvnDL9F_qO3lcWFII9SrJE",
-            authDomain: "casamento-2025.firebaseapp.com",
-            databaseURL: "https://casamento-2025-default-rtdb.firebaseio.com",
-            projectId: "casamento-2025",
-            storageBucket: "casamento-2025.firebasestorage.app",
-            messagingSenderId: "754585645789",
-            appId: "1:754585645789:web:54e5f5116ee6fe4f97e134"
-        };
+    // Configuração do Firebase (Substitua pelos seus dados)
+    const firebaseConfig = {
+  apiKey: "AIzaSyDdIMWvEeuHVLvnDL9F_qO3lcWFII9SrJE",
+  authDomain: "casamento-2025.firebaseapp.com",
+  databaseURL: "https://casamento-2025-default-rtdb.firebaseio.com",
+  projectId: "casamento-2025",
+  storageBucket: "casamento-2025.firebasestorage.app",
+  messagingSenderId: "754585645789",
+  appId: "1:754585645789:web:54e5f5116ee6fe4f97e134"
+};
 
-        // Inicializa Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        let nomeSelecionado = "";
-        let convidados = [
-            "Ana Silva", "Carlos Souza", "Fernanda Lima", "João Oliveira", "Maria Santos"
-        ];
+    // Inicializa Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    let nomeSelecionado = "";
+    let convidados = [
+        "Ana Silva", "Carlos Souza", "Fernanda Lima", "João Oliveira", "Maria Santos"
+    ];
 
-        // Buscar convidados do Firebase para atualizar lista local
-        get(ref(db, "convidados")).then(snapshot => {
-            if (snapshot.exists()) {
-                const convidadosFirebase = Object.values(snapshot.val());
-                convidados = [...new Set([...convidados, ...convidadosFirebase])]; // Mescla Firebase + Local
-            }
-        });
-
-        function openPopup() {
-            document.getElementById("popup").style.display = "block";
+    // Buscar convidados do Firebase para atualizar lista local
+    get(ref(db, "convidados")).then(snapshot => {
+        if (snapshot.exists()) {
+            const convidadosFirebase = Object.values(snapshot.val());
+            convidados = [...new Set([...convidados, ...convidadosFirebase])]; // Mescla Firebase + Local
         }
+    });
 
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
+    function openPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("message").textContent = ""; // Limpa mensagem ao fechar
+    }
+
+    document.getElementById("search").addEventListener("input", function () {
+        const searchTerm = this.value.toLowerCase();
+        const resultsList = document.getElementById("results");
+        resultsList.innerHTML = "";
+        nomeSelecionado = "";
+        document.getElementById("confirm").style.display = "none";
+
+        if (searchTerm) {
+            const filteredNames = convidados.filter(nome => nome.toLowerCase().includes(searchTerm));
+            filteredNames.forEach(nome => {
+                const li = document.createElement("li");
+                li.textContent = nome;
+                li.onclick = function () {
+                    nomeSelecionado = nome;
+                    document.getElementById("search").value = nome;
+                    resultsList.innerHTML = "";
+                    document.getElementById("confirm").style.display = "block";
+                };
+                resultsList.appendChild(li);
+            });
         }
+    });
 
-        document.getElementById("search").addEventListener("input", function () {
-            const searchTerm = this.value.toLowerCase();
-            const resultsList = document.getElementById("results");
-            resultsList.innerHTML = "";
-            nomeSelecionado = "";
-            document.getElementById("confirm").style.display = "none";
-
-            if (searchTerm) {
-                const filteredNames = convidados.filter(nome => nome.toLowerCase().includes(searchTerm));
-                filteredNames.forEach(nome => {
-                    const li = document.createElement("li");
-                    li.textContent = nome;
-                    li.onclick = function () {
-                        nomeSelecionado = nome;
-                        document.getElementById("search").value = nome;
-                        resultsList.innerHTML = "";
-                        document.getElementById("confirm").style.display = "block";
-                    };
-                    resultsList.appendChild(li);
-                });
-            }
-        });
-
-        document.getElementById("confirm").addEventListener("click", function () {
-            if (nomeSelecionado) {
-                update(ref(db, `convidados/${nomeSelecionado}`), {
-                    status: "Confirmado",
-                    data: new Date().toLocaleString()
-                })
-                .then(() => {
-                    document.getElementById("message").textContent = `${nomeSelecionado}, sua presença foi confirmada! 🎉`;
-                    document.getElementById("confirm").style.display = "none";
-                })
-                .catch(error => console.error("Erro ao confirmar presença:", error));
-            }
-        });
-        </script>
+    document.getElementById("confirm").addEventListener("click", function () {
+        if (nomeSelecionado) {
+            update(ref(db, `convidados/${nomeSelecionado}`), {
+                status: "Confirmado",
+                data: new Date().toLocaleString()
+            })
+            .then(() => {
+                document.getElementById("message").textContent = `${nomeSelecionado}, sua presença foi confirmada! 🎉`;
+                document.getElementById("confirm").style.display = "none";
+                document.getElementById("search").value = "";
+            })
+            .catch(error => console.error("Erro ao confirmar presença:", error));
+        }
+    });
+</script>
 
         <section id="rsvp">
+            <button class="btn-open" onclick="openPopup()">Confirmar Presença</button>
+            <div class="popup" id="popup">
+                <button class="close-btn" onclick="closePopup()">&times;</button>
+                <h3>Digite seu nome</h3>
+                <input type="text" id="search" placeholder="Digite seu nome...">
+                <ul id="results"></ul>
+                <button id="confirm" style="display: none;">Confirmar</button>
+                <p id="message"></p>
+            </div>
             <!--<div class="rsvp-container">
                 <h2 class="rsvp-title">Confirmação de Presença</h2>
                 <p class="rsvp-description">Digite seu nome para verificar sua presença na lista de convidados.</p>
@@ -385,15 +397,6 @@
                     <p>Obrigado por confirmar sua presença. Nos vemos no grande dia! 🎊</p>
                 </div>
             </div>-->
-
-            <button class="btn-open" onclick="openPopup()">Confirmar Presença</button>
-            <div class="popup" id="popup">
-                <h3>Digite seu nome</h3>
-                <input type="text" id="search" placeholder="Digite seu nome...">
-                <ul id="results"></ul>
-                <button id="confirm" style="display: none;">Confirmar</button>
-                <p id="message"></p>
-            </div>
         </section>
     </div>
         
