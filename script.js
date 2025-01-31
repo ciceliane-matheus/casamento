@@ -94,15 +94,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-const API_URL = "https://script.google.com/macros/s/AKfycbxh_2M7u_3EPU0VZtGmVn23krGbhwAOXhrX4edFsn1nwU2spSVBOSI0RF-d1pL6ZetmRg/exec"; // Substitua pela URL gerada no Apps Script
 let nomeSelecionado = "";
 let convidados = [];
 
-// Buscar nomes diretamente da API do Google Sheets
-fetch(API_URL + "?action=get")
+// Buscar lista de convidados do JSON
+fetch("convidados.json")
     .then(response => response.json())
     .then(data => {
-        convidados = data;
+        convidados = data.confirmados;
     })
     .catch(error => console.error("Erro ao carregar convidados:", error));
 
@@ -139,22 +138,7 @@ document.getElementById("search").addEventListener("input", function () {
 
 document.getElementById("confirm").addEventListener("click", function () {
     if (nomeSelecionado) {
-        fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ nome: nomeSelecionado })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "success") {
-                document.getElementById("message").textContent = `${nomeSelecionado}, sua presença foi confirmada! 🎉`;
-                document.getElementById("confirm").style.display = "none";
-            } else {
-                document.getElementById("message").textContent = "Erro ao confirmar. Tente novamente.";
-            }
-        })
-        .catch(error => console.error("Erro ao confirmar presença:", error));
+        document.getElementById("message").textContent = `${nomeSelecionado}, sua presença foi confirmada! 🎉`;
+        document.getElementById("confirm").style.display = "none";
     }
 });

@@ -840,9 +840,6 @@ text-align: center;
     cursor: pointer;
     transition: 0.3s;
     border-radius: 5px;
-    opacity: 0;
-    transform: translateY(-10px);
-    animation: fadeIn 0.3s ease-in-out forwards;
 }
 .popup li:hover {
     background: #d4edda;
@@ -860,6 +857,7 @@ text-align: center;
 .popup button:hover {
     background: #218838;
 }
+
 @keyframes fadeIn {
     from {
         opacity: 0;
