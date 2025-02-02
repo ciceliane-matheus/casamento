@@ -1,3 +1,13 @@
+// Aguarda o carregamento do DOM
+document.addEventListener("DOMContentLoaded", function() {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+
+  menuToggle.addEventListener("click", function() {
+      navMenu.classList.toggle("active");
+  });
+});
+
 //Script para o Contador
 const contadorDate = new Date("2025-04-21T00:00:00").getTime();
 setInterval(() => {

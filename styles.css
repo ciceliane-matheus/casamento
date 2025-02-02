@@ -23,11 +23,30 @@ body {
     overflow-x: hidden;
 }
 
-@media (max-width: 768px) {
-    body {
-        font-size: 16px;
-        padding: 10px;
+@media (max-width: 480px) {
+    header nav ul {
+        flex-direction: column;
+        padding: 10px;  /* Menos espaço para dispositivos muito pequenos */
+        gap: 1rem;
     }
+    .logo {
+        width: 70px;  /* Já existe essa regra, reforçando para mobile */
+    }
+}   
+
+@media (max-width: 1024px) {
+    /* Estilos para tablets */
+    body {
+        font-size: 18px; /* Ajustar tamanho da fonte */
+    }
+    .banner-informacao h1 {
+        font-size: 2.5rem; /* Ajustar tamanho do título */
+    }
+}
+
+img {
+    max-width: 100%; /* Garantir que as imagens não excedam a largura do contêiner */
+    height: auto; /* Manter a proporção */
 }
 
 header {
@@ -37,8 +56,7 @@ header {
     background-color: white;
     box-sizing: border-box;
     margin: 0;
-    padding: 0rem 5rem 0rem 5rem;
-    
+    padding: 1;
     position: fixed;
     top: 0;
     left: 0;
@@ -47,10 +65,18 @@ header {
     z-index: 1000;
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 .logo-container {
     padding: 0;
     margin: 0;
-}
+    }
 
 .logo {
     width: 90px;
@@ -64,7 +90,7 @@ header nav ul {
     align-items: center;
     list-style: none;
     flex-shrink: 0;
-    padding: 96 42;
+    padding: 30px 20px;
     border-radius: 16px;
     display: flex;
     justify-content: right;
@@ -77,6 +103,49 @@ header nav ul li {
     gap: 1.5rem;
     margin: 0 auto;
     text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    /* Exibe o botão do menu */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Oculta o menu de navegação fora da tela */
+    #nav-menu {
+        position: fixed;
+        top: 0;
+        left: -250px;  /* Fica fora da tela à esquerda */
+        width: 250px;
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+        transition: left 0.3s ease;
+        z-index: 1001;
+        padding-top: 60px; /* Espaço para não cobrir o header */
+    }
+
+    /* Quando o menu estiver ativo (classe 'active'), ele desliza para dentro */
+    #nav-menu.active {
+        left: 0;
+    }
+
+    /* Ajusta os itens do menu para ficarem em coluna */
+    #nav-menu ul {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #nav-menu ul li {
+        margin-bottom: 20px;
+    }
 }
 
 nav ul li a {
@@ -103,6 +172,17 @@ header nav ul li a:hover {
     display: flex;
     align-items: center;
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    #banner-informacao {
+        width: 90%;    /* Largura relativa para adaptar à tela */
+        top: 60%;
+        padding: 1.5rem;
+    }
+    #banner-informacao h1 {
+        font-size: 2.5rem;  /* Reduz o tamanho do título */
+    }
 }
 
 .slideshow-container {
@@ -279,7 +359,6 @@ header nav ul li a:hover {
     width: 80%;
     max-width: 1000px;
     gap: 40px;
-    position: relative;
 }
 
 .historia-bloco.inverso {
@@ -289,6 +368,22 @@ header nav ul li a:hover {
     width: 80%;
     max-width: 1000px;
     gap: 40px; /* Espaço entre a imagem e o texto */
+}
+
+@media (max-width: 768px) {
+    .historia-bloco {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .imagem-historia, .texto-historia {
+        width: 100%;
+    }
+    .imagem-historia {
+        height: auto;
+    }
+    .texto-historia h3 {
+        font-size: 2rem; /* Diminui o tamanho do título para mobile */
+    }
 }
 
 .imagem-historia {
@@ -343,6 +438,14 @@ header nav ul li a:hover {
     text-align: center;
     width: 150%;
     height: 35vh;
+}
+
+@media (max-width: 768px) {
+    .aviso-traje {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
 }
 
 .aviso-texto {
@@ -452,6 +555,17 @@ header nav ul li a:hover {
     transform: scale(0.85);
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .bl-cr1 {
+        width: 90%;
+        max-width: 300px;
+    }
+    .paletas-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 .imagem-slide {
@@ -683,6 +797,16 @@ text-align: center;
     text-align: center; 
     width: 40%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .recepcao-header {
+        flex-direction: column;
+    }
+    .imagem-recepcao, .detalhes-recepcao {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 .titulo-recepcao {
