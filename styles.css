@@ -880,6 +880,10 @@ text-align: center;
     /* --- Menu Off‑Canvas --- */
     .menu-toggle {
       display: block;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;  
     }
     /* Oculta a navegação padrão */
     nav ul {
