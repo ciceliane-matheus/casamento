@@ -27,27 +27,6 @@ body {
     overflow-x: hidden;
 }
 
-@media (max-width: 480px) {
-    header nav ul {
-        flex-direction: column;
-        padding: 10px;  /* Menos espaço para dispositivos muito pequenos */
-        gap: 1rem;
-    }
-    .logo {
-        width: 70px;  /* Já existe essa regra, reforçando para mobile */
-    }
-}   
-
-@media (max-width: 1024px) {
-    /* Estilos para tablets */
-    body {
-        font-size: 18px; /* Ajustar tamanho da fonte */
-    }
-    .banner-informacao h1 {
-        font-size: 2.5rem; /* Ajustar tamanho do título */
-    }
-}
-
 img {
     max-width: 100%; /* Garantir que as imagens não excedam a largura do contêiner */
     height: auto; /* Manter a proporção */
@@ -74,152 +53,6 @@ header {
     font-size: 2rem;
     cursor: pointer;
 }
-
-@media (max-width: 768px) {
-
-    /* Exibe o botão de menu */
-    .menu-toggle {
-      display: block;
-    }
-  
-    /* Remove a versão desktop do menu */
-    nav ul {
-      display: none;
-    }
-  
-    /* Estilização do menu off‑canvas */
-    #nav-menu {
-      position: fixed;
-      top: 0;
-      left: -250px; /* Esconde o menu à esquerda */
-      width: 250px;
-      height: 100%;
-      background-color: white;
-      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
-      transition: left 0.3s ease;
-      z-index: 1001;
-      padding-top: 60px; /* Espaço para não sobrepor o header */
-    }
-  
-    /* Quando ativo, desliza para dentro */
-    #nav-menu.active {
-      left: 0;
-    }
-  
-    /* Itens do menu em coluna */
-    #nav-menu ul {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
-  
-    #nav-menu ul li {
-      margin-bottom: 20px;
-    }
-  
-    /* --- Contador --- */
-    .contagem {
-      padding: 1rem;
-    }
-    .bloco-contagem {
-      width: 80px;
-      height: 80px;
-      padding: 0.5rem;
-    }
-    .numero {
-      font-size: 1.5rem;
-    }
-    .label {
-      font-size: 0.7rem;
-    }
-  
-    /* --- Seção "Sobre" --- */
-    .historia-container {
-      width: 90%;
-      margin: 0 auto;
-    }
-    .historia-bloco {
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-    }
-    .imagem-historia,
-    .texto-historia {
-      width: 100%;
-    }
-    .imagem-historia {
-      height: auto;
-    }
-    .texto-historia h3 {
-      font-size: 2rem;
-    }
-  
-    /* --- Seção "Cerimonia" (Slider) --- */
-    .slider-container {
-      max-width: 100%;
-      margin: auto;
-    }
-    .paletas-container {
-      justify-content: center;
-    }
-    .bl-cr1 {
-      width: 90%;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-  
-    /* Caso algum elemento use largura fixa maior que 100%, ajuste-o: */
-    .aviso-traje {
-      width: 100%;
-      height: auto;
-      padding: 20px;
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-
-    /* Ajusta o menu se necessário – mantendo o off‑canvas se desejar */
-    /* Você pode optar por manter o menu em desktop para iPad ou usar o off‑canvas. Exemplo abaixo: */
-    .menu-toggle {
-      display: block;
-    }
-    nav ul {
-      display: none;
-    }
-    #nav-menu {
-      left: -250px;
-    }
-    #nav-menu.active {
-      left: 0;
-    }
-  
-    /* --- Seção "Cerimonia" (Slider) --- */
-    .bl-cr1 {
-      width: 80%;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-  
-    /* --- Altura das imagens --- */
-    .imagem-historia,
-    .imagem-recepcao {
-      height: auto;
-      max-height: 60vh; /* Limita a altura para não ocupar toda a tela verticalmente */
-    }
-  
-    /* --- Cabeçalho --- */
-    .logo {
-      width: 80px;
-      height: auto;
-    }
-    header {
-      padding: 10px 15px;
-    }
-    nav ul {
-      padding: 10px;
-      gap: 1rem;
-    }
-  }
 
 .logo-container {
     padding: 0;
@@ -316,17 +149,6 @@ header nav ul li a:hover {
     display: flex;
     align-items: center;
     overflow: hidden;
-}
-
-@media (max-width: 768px) {
-    #banner-informacao {
-        width: 90%;    /* Largura relativa para adaptar à tela */
-        top: 60%;
-        padding: 1.5rem;
-    }
-    #banner-informacao h1 {
-        font-size: 2.5rem;  /* Reduz o tamanho do título */
-    }
 }
 
 .slideshow-container {
@@ -515,22 +337,6 @@ header nav ul li a:hover {
     gap: 40px; /* Espaço entre a imagem e o texto */
 }
 
-@media (max-width: 768px) {
-    .historia-bloco {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .imagem-historia, .texto-historia {
-        width: 100%;
-    }
-    .imagem-historia {
-        height: auto;
-    }
-    .texto-historia h3 {
-        font-size: 2rem; /* Diminui o tamanho do título para mobile */
-    }
-}
-
 .imagem-historia {
     width: 50%;
     height: 250px;
@@ -583,14 +389,6 @@ header nav ul li a:hover {
     text-align: center;
     width: 150%;
     height: 35vh;
-}
-
-@media (max-width: 768px) {
-    .aviso-traje {
-        width: 100%;
-        height: auto;
-        padding: 20px;
-    }
 }
 
 .aviso-texto {
@@ -700,17 +498,6 @@ header nav ul li a:hover {
     transform: scale(0.85);
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0.6;
-}
-
-@media (max-width: 768px) {
-    .bl-cr1 {
-        width: 90%;
-        max-width: 300px;
-    }
-    .paletas-container {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
 }
 
 .imagem-slide {
@@ -944,16 +731,6 @@ text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-    .recepcao-header {
-        flex-direction: column;
-    }
-    .imagem-recepcao, .detalhes-recepcao {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
-
 .titulo-recepcao {
     font-size: 1.8rem;
     color: #000080;
@@ -1024,111 +801,290 @@ text-align: center;
 }
 
 #rsvp {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-family: "Arial", sans-serif;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+#rsvp h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#rsvp-form label {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  color: #555;
+}
+
+#rsvp-form input,
+#rsvp-form select,
+#rsvp-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  transition: all 0.3s ease-in-out;
+}
+
+#rsvp-form input:focus,
+#rsvp-form select:focus,
+#rsvp-form textarea:focus {
+  border-color: #a855f7;
+  outline: none;
+  background: #fff;
+}
+
+#rsvp-form button {
+  background: #a855f7;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+#rsvp-form button:hover {
+  background: #9333ea;
+}
+
+#mensagem {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #28a745;
+  font-weight: bold;
+}
+/*===================================================
+ Responsividade para dispositivos móveis (até 768px)
+ =================================================== */
+ @media (max-width: 768px) {
+  /* --- Menu Off‑Canvas --- */
+  .menu-toggle {
+    display: block;
   }
-  
-  #rsvp h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
+  nav ul {
+    display: none;
   }
-  
-  #rsvp-form {
+  #nav-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Menu inicia oculto à esquerda */
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+    z-index: 1001;
+    padding-top: 60px; /* Garante que o menu não sobreponha o header */
+  }
+  #nav-menu.active {
+    left: 0;
+  }
+  #nav-menu ul {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    padding: 20px;
   }
-  
-  #rsvp-form label {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: left;
-    color: #555;
+  #nav-menu ul li {
+    margin-bottom: 20px;
   }
-  
+
+  /* --- Contador --- */
+  .contagem {
+    padding: 1rem;
+  }
+  .bloco-contagem {
+    width: 80px;
+    height: 80px;
+    padding: 0.5rem;
+  }
+  .numero {
+    font-size: 1.5rem;
+  }
+  .label {
+    font-size: 0.7rem;
+  }
+
+  /* --- Banner de Informação --- */
+  .banner-informacao {
+    width: 90%;
+    padding: 1.5rem;
+    top: 60%;
+  }
+  .banner-informacao h1 {
+    font-size: 2rem;
+  }
+  .banner-informacao p {
+    font-size: 1rem;
+  }
+
+  /* --- Seção "Sobre" --- */
+  .historia-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .historia-bloco {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  .imagem-historia,
+  .texto-historia {
+    width: 100%;
+  }
+  .imagem-historia {
+    height: auto;
+  }
+  .texto-historia h3 {
+    font-size: 2rem;
+  }
+
+  /* --- Seção "Cerimonia" (Slider) --- */
+  .slider-container {
+    max-width: 100%;
+    margin: auto;
+  }
+  .paletas-container {
+    justify-content: center;
+  }
+  .bl-cr1 {
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* --- Aviso Traje --- */
+  .aviso-traje {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  /* --- Seção "Recepcao" --- */
+  .recepcao-header {
+    flex-direction: column;
+  }
+  .imagem-recepcao,
+  .detalhes-recepcao {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* ===================================================
+   Responsividade para Tablets (entre 769px e 1024px)
+   =================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Se optar por manter o menu off‑canvas em tablet */
+  .menu-toggle {
+    display: block;
+  }
+  nav ul {
+    display: none;
+  }
+  #nav-menu {
+    left: -250px;
+  }
+  #nav-menu.active {
+    left: 0;
+  }
+
+  /* --- Seção "Cerimonia" (Slider) --- */
+  .bl-cr1 {
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* --- Altura das Imagens --- */
+  .imagem-historia,
+  .imagem-recepcao {
+    height: auto;
+    max-height: 60vh; /* Limita a altura para evitar que ocupem toda a tela */
+  }
+
+  /* --- Cabeçalho --- */
+  .logo {
+    width: 80px;
+    height: auto;
+  }
+  header {
+    padding: 10px 15px;
+  }
+  nav ul {
+    padding: 10px;
+    gap: 1rem;
+  }
+
+  /* --- Banner de Informação --- */
+  .banner-informacao h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* ===================================================
+   Ajustes adicionais para telas muito pequenas
+   =================================================== */
+/* Para formulários RSVP (até 600px) */
+@media (max-width: 600px) {
+  #rsvp {
+    width: 90%;
+    padding: 15px;
+  }
   #rsvp-form input,
   #rsvp-form select,
   #rsvp-form textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #f9f9f9;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  #rsvp-form input:focus,
-  #rsvp-form select:focus,
-  #rsvp-form textarea:focus {
-    border-color: #a855f7;
-    outline: none;
-    background: #fff;
-  }
-  
-  #rsvp-form button {
-    background: #a855f7;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  #rsvp-form button:hover {
-    background: #9333ea;
-  }
-  
-  #mensagem {
-    margin-top: 15px;
     font-size: 14px;
-    color: #28a745;
-    font-weight: bold;
+    padding: 8px;
   }
-  
-  @media (max-width: 600px) {
-    #rsvp {
-      width: 90%;
-      padding: 15px;
-    }
-  
-    #rsvp-form input,
-    #rsvp-form select,
-    #rsvp-form textarea {
-      font-size: 14px;
-      padding: 8px;
-    }
-  
-    #rsvp-form button {
-      font-size: 14px;
-      padding: 10px;
-    }
-  }  
-
-@media (max-width: 768px) {
-    .banner-informacao {
-        width: 80%;
-        padding: 1.5rem;
-    }
-
-    .banner-informacao h1 {
-        font-size: 2rem;
-    }
-
-    .banner-informacao p {
-        font-size: 1rem;
-    }
+  #rsvp-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
+
+/* Para ajustes finos no cabeçalho (até 480px) */
+@media (max-width: 480px) {
+  header nav ul {
+    flex-direction: column;
+    padding: 10px;
+    gap: 1rem;
+  }
+  .logo {
+    width: 70px;
+  }
+}
+
+/* ===================================================
+   Ajuste global para tablets (até 1024px)
+   =================================================== */
+@media (max-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+  .banner-informacao h1 {
+    font-size: 2.5rem;
+  }
+}
+  
 
 footer {
     background-color: white;
