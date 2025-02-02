@@ -870,6 +870,100 @@ footer {
   }
 }
 
+@media (max-width: 450px) {
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Faz o menu ocupar toda a tela */
+  background-color: white;
+  padding-top: 80px; /* Espaço para o logo */
+  text-align: center;
+  z-index: 1001;
+}
+
+.nav-menu.active {
+  display: flex;
+}
+
+.nav-menu li {
+  padding: 20px 0;
+}
+
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.menu-toggle {
+  display: block;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000080;
+}
+
+/* Ajuste das seções */
+#banner {
+  height: 80vh;
+}
+
+.banner-informacao h1 {
+  font-size: 2rem;
+}
+
+.contagem {
+  padding: 1rem;
+}
+
+.numeros {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.historia-container {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.historia-bloco {
+  flex-direction: column;
+  text-align: center;
+}
+
+.imagem-historia {
+  width: 100%;
+}
+
+.slider-container {
+  max-width: 100%;
+}
+
+.bl-cr1 {
+  width: 90%;
+  max-width: 300px;
+}
+
+.recepcao-header {
+  flex-direction: column;
+}
+
+.imagem-recepcao, .detalhes-recepcao {
+  width: 100%;
+  text-align: center;
+}
+}
+
 /* =========================
    📱 Responsividade Mobile
    ========================= */
