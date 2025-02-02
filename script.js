@@ -1,10 +1,17 @@
-//DOM
 document.addEventListener("DOMContentLoaded", function() {
-  const menuToggle = document.getElementById("menu-toggle");
-  const navMenu = document.getElementById("nav-menu");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
 
+  // Alternar o menu ao clicar no botão hamburguer
   menuToggle.addEventListener("click", function() {
-    navMenu.classList.toggle("active");
+      navMenu.classList.toggle("active");
+  });
+
+  // Fechar o menu ao clicar em um link
+  navMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", function() {
+          navMenu.classList.remove("active");
+      });
   });
 });
 
