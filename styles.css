@@ -888,7 +888,23 @@ footer {
   }
 
   .nav-menu.active {
-      display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    height: auto;
+    z-index: 1001;
+    padding: 20px 0;
+  }
+
+  .nav-menu li a {
+    font-size: 18px;
+    width: 100%;
+    display: block;
   }
 
   .menu-toggle {
