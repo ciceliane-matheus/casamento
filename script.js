@@ -13,22 +13,6 @@ menu.addEventListener('click', ()=>{
 overlay.addEventListener('click', ()=>{
     menu.classList.remove('abrir-menu')
 })
-/*document.addEventListener("DOMContentLoaded", function() {
-  const menuToggle = document.getElementById("menu-toggle");
-  const navMenu = document.getElementById("nav-menu");
-
-  // Alternar o menu ao clicar no botão hamburguer
-  menuToggle.addEventListener("click", function() {
-      navMenu.classList.toggle("active");
-  });
-
-  // Fechar o menu ao clicar em um link
-  navMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", function() {
-          navMenu.classList.remove("active");
-      });
-  });
-});*/
 
 //Script para o Contador
 const contadorDate = new Date("2025-04-21T00:00:00").getTime();
@@ -124,37 +108,3 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(updateSlidePosition, 200);
     });
 });
-
-//Confirmação de Presença
-document.getElementById("rsvp-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-  
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyTwUmqqiK_mB4Cy01OENTKmY5n_SNB4MWgv7pBG7iaTq4QW_isHf_VhdazD_UaiqJqAw/exec"; // Substitua pela URL correta
-  
-    const data = {
-      nome: document.getElementById("nome").value,
-      presenca: document.getElementById("presenca").value,
-      acompanhantes: document.getElementById("acompanhantes").value || "0",
-      observacoes: document.getElementById("observacoes").value || ""
-    };
-  
-    fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.json())
-    .then(response => {
-      if (response.status === "sucesso") {
-        document.getElementById("rsvp-form").reset();
-        document.getElementById("mensagem").style.display = "block";
-        document.getElementById("mensagem").textContent = "Confirmação enviada com sucesso!";
-      } else {
-        alert("Erro ao enviar confirmação: " + response.mensagem);
-      }
-    })
-    .catch(error => {
-      console.error("Erro:", error);
-      alert("Erro ao conectar ao servidor.");
-    });
-  });  

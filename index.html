@@ -167,7 +167,7 @@
                                 <img src="Imagens/Cerimônia/Noiva.jpeg" class="imagem-slide" alt="Noiva">
                                 <h3 class="titulo-especial">Noiva</h3>
                                 <div class="bolas-container">
-                                    <div class="bola.active" style="background-color: white;"></div>
+                                    <div class="bola.active" style="background-color: white"></div>
                                 </div>
                                 <p class="descricao-paleta">Branco</p>
                             </div>
@@ -303,26 +303,42 @@
 
         <section id="rsvp">
             <h2>Confirme sua presença</h2>
-            <form id="rsvp-form">
-              <label>Nome:</label>
-              <input type="text" id="nome" required>
-              
-              <label>Você vai comparecer?</label>
-              <select id="presenca">
-                <option value="Sim">Sim</option>
-                <option value="Não">Não</option>
-              </select>
-              
-              <label>Número de acompanhantes:</label>
-              <input type="number" id="acompanhantes" min="0">
-              
-              <label>Observações:</label>
-              <textarea id="observacoes"></textarea>
-          
-              <button type="submit">Enviar</button>
+
+            <form id="rsvp-form" action="https://formsubmit.co/msantos.mktdigital@gmail.com" method="POST">
+
+                <!-- jQuery -->
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <!-- jQuery Mask Plugin -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+                <input type= "hidden" name="_next" value="http://127.0.0.1:5500/sucesso.html"/>
+                <input type="hidden" name="_captcha" value="false">
+
+                <label>Nome:</label>
+                <input type="text" name ="name" required>
+                
+                <label>Você vai comparecer?</label>
+                <select name="presenca" required>
+                  <option value="">Selecione...</option>
+                  <option value="Sim">Sim</option>
+                  <option value="Não">Não</option>
+                </select>              
+
+                <label>Insira seu contato:</label>
+                <input type="tel" name="tel" placeholder="(xx) xxxxx-xxxx" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" required>
+
+                <script>
+                    $(document).ready(function(){
+                      $('input[name="tel"]').mask('(00) 00000-0000');
+                    });
+                  </script>
+                
+                <label>Observações:</label>
+                <textarea name="observacoes"></textarea>
+                
+                <button type="send">Enviar</button>
             </form>
           
-            <p id="mensagem" style="display:none;">Confirmação enviada com sucesso!</p>
           </section>
         
     </div>

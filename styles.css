@@ -23,6 +23,10 @@ body {
   overflow-x: hidden;
 }
 
+body, html {
+  width: 100%;
+}
+
 img {
   max-width: 100%; /* Garantir que as imagens não excedam a largura do contêiner */
   height: auto; /* Manter a proporção */
