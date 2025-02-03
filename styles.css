@@ -959,18 +959,18 @@ footer {
   }
 
   .historia-bloco {
-    width: 200%;
+    width: 100%;
     flex-direction: column;
     text-align: center;
   }
 
   .historia-bloco.inverso {
-    width: 200%;
+    width: 100%;
     flex-direction:column-reverse;
   }
 
-  .imagem-historia {
-    width: 60%;
+  .imagem-historia, .texto-historia {
+    width: 100%;
   }
 
   .texto-historia h3 {
@@ -996,7 +996,6 @@ footer {
 
 .imagem-recepcao {
     width: 100%; /* Garante que a imagem ocupe toda a largura */
-    max-width: 350px; /* Define um tamanho máximo opcional */
     order: -1; /* Coloca a imagem antes dos detalhes */
 }
 
