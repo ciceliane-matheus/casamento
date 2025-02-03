@@ -855,8 +855,9 @@ footer {
 
 @media screen and (max-width: 1200px) {
   /* CABEÇALHO*/
-  body {
+  body, html {
     overflow-x: hidden;
+    width: 100%;
   }
 
   header{
