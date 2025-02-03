@@ -1,3 +1,35 @@
+// Selecionar o preloader
+const preloader = document.getElementById("preloader");
+
+// Bloquear o scroll adicionando a classe 'no-scroll' ao body
+document.body.classList.add("no-scroll");
+
+// Remover o preloader e desbloquear o scroll
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        preloader.classList.add("hidden"); // Esconde o preloader
+        document.body.classList.remove("no-scroll"); // Desbloqueia o scroll
+    }, 3000); // Tempo em milissegundos para o preloader desaparecer
+});
+
+let lastScrollTop = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > lastScrollTop) {
+        // Rola para baixo, esconde o header
+        header.style.top = "-100px"; /* Ajuste para altura do header */
+    } else {
+        // Rola para cima, mostra o header
+        header.style.top = "0";
+    }
+
+    lastScrollTop = scrollTop;
+});
+
+//menu-mobile
 let btnMenu = document.getElementById('btn-menu')
 let menu = document.getElementById('menu-mobile')
 let overlay = document.getElementById('overlay-menu')
