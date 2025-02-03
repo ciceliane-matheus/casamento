@@ -38,7 +38,6 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  transition: top 0.3s ease-in-out;
   z-index: 1000;
 }
 
@@ -75,7 +74,8 @@ header nav ul li {
 }
 
 /* 🎯 Menu Mobile */
-.menu-toggle {
+
+.btn-abrir-menu {
   display: none;
   background: none;
   border: none;
@@ -147,7 +147,7 @@ header nav ul li a:hover {
   opacity: 1;
 }
 
-#banner img {
+.banner img {
   width: 100%; 
   height: 100%; 
   left: 0;
@@ -156,18 +156,7 @@ header nav ul li a:hover {
   position: center;
 }
 
-#banner .overlay {
-  position: absolute;
-  left: 1;
-  right: 0;
-  width: 35%; 
-  height: 100%; 
-  background-image: url(Imagens/blue-watercolor-stain-white-background\ 1.png); pointer-events: none;
-  background-position: center; 
-
-}
-
-#banner-informacao {
+.banner-informacao {
   position: absolute;
   top: 72%;
   left: 50%;
@@ -181,7 +170,8 @@ header nav ul li a:hover {
   border-radius: 8px;
 }
 
-#banner-informacao h1 {
+.banner-informacao h1 {
+  color: white;
   font-size: 100px;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -488,7 +478,6 @@ header nav ul li a:hover {
 .bl-cr1.active {
   transform: scale(1.1); 
   opacity: 1;
-
 }
 
 .titulo-paleta {
@@ -647,12 +636,12 @@ header nav ul li a:hover {
 
 .presente-item p {
   font-size: 1rem;
-  color: #004d60;
+  color: #000080;
   margin-bottom: 15px;
 }
 
 .presente-item button {
-  background-color: #004d60;
+  background-color: #000080;
   color: #ffffff;
   padding: 12px 18px;
   border: none;
@@ -663,7 +652,7 @@ header nav ul li a:hover {
 }
 
 .presente-item button:hover {
-  background-color: #003847;
+  background-color: blue;
 }
 
 #recepcao {
@@ -828,7 +817,7 @@ text-align: center;
 }
 
 #rsvp-form button {
-  background: #a855f7;
+  background: #000080;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -840,7 +829,7 @@ text-align: center;
 }
 
 #rsvp-form button:hover {
-  background: #9333ea;
+  background: blue;
 }
 
 #mensagem {
@@ -858,117 +847,174 @@ footer {
   margin-top: 2rem;
 }
 
-@media (min-width: 769px) {
-  .menu-toggle {
-      display: none;
-  }
-
-  .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
+@media (min-width: 1201px) {
+  .menu-mobile {
+    display: none;
   }
 }
 
-@media (max-width: 450px) {
-.nav-menu {
-  display: none;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh; /* Faz o menu ocupar toda a tela */
-  background-color: white;
-  padding-top: 80px; /* Espaço para o logo */
-  text-align: center;
-  z-index: 1001;
+@media screen and (max-width: 1200px) {
+  /* CABEÇALHO*/
+  header{
+    top: -0.1%;
+    height: 13%;
+  }
+
+  .menu-mobile {
+    display: fixed;
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+  }
+
+  .menu-mobile.abrir-menu {
+    width: 70%;
+
+  }
+
+  .menu-mobile.abrir-menu ~ .overlay-menu {
+    display: block;
+  }
+
+  .menu-mobile .btn-fechar {
+    padding: 20px 8%;
+  }
+
+  .menu-mobile .btn-fechar i {
+    color: #000080;
+    font-size: 30px;
+  }
+
+  .btn-abrir-menu {
+    display: block; /* Mostra o botão de menu */
+    color: #000080;
+  }
+  
+  .menu-mobile nav ul {
+    flex-direction: column;
+    text-align: right;
+  }
+  
+  .menu-mobile nav ul li a{
+    font-size: 20px; 
+    display: block;
+  }
+  
+  .nav-menu{
+    display:none;
+  }
+
+  .overlay-menu {
+    background-color: rgba(0, 0, 0, 0.507);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 88888;
+    display: none;
+  }
+   #banner {
+    height: 80vh;
+  }
+
+  .banner-informacao {
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .banner-informacao h1 {
+    font-size: 3rem;
+    color: white;
+  }
+
+  /*CONTADOR*/
+  .bloco-contagem {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0px;
+    margin: 0 -15px; /* Adiciona espaçamento lateral */
+  }
+  .label {
+    font-size: 0.6rem;
+  }
+  /*SOBRE*/
+  .linha-sobre{
+    display: none;
+  }
+  .historia-container {
+    width: 100%;
+  }
+
+  .historia-bloco {
+    width: 200%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .historia-bloco.inverso {
+    width: 200%;
+    flex-direction:column-reverse;
+  }
+
+  .imagem-historia {
+    width: 60%;
+  }
+
+  .texto-historia h3 {
+    font-size: 4rem;
+    text-align: center;
+  }
+  /*CERIMÔNIA*/
+  .aviso-traje {
+     width: 100%;
+  }
+  .bloco-restrito {
+    padding: 40px;
+  }
+  .prev-btn { left: 420px; }
+  .next-btn { right: 420px; }
+  /*RECEPÇÃO*/
+  .recepcao-header {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center; /* Centraliza os itens */
+    text-align: center; /* Centraliza o texto */
 }
 
-.nav-menu.active {
-  display: flex;
+.imagem-recepcao {
+    width: 100%; /* Garante que a imagem ocupe toda a largura */
+    max-width: 350px; /* Define um tamanho máximo opcional */
+    order: -1; /* Coloca a imagem antes dos detalhes */
 }
 
-.nav-menu li {
-  padding: 20px 0;
+.detalhes-recepcao {
+    margin-top: 20px; /* Adiciona espaçamento entre a imagem e os detalhes */
+    width: 100%; /* Garante que ocupe toda a largura */
 }
-
-.menu-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1002;
+.detalhes-recepcao p {
+  font-size: 1rem;
 }
-
-.menu-toggle {
-  display: block;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #000080;
+.evento, .horario {
+  font-size: 2.5rem;
 }
-
-/* Ajuste das seções */
-#banner {
-  height: 80vh;
-}
-
-.banner-informacao h1 {
-  font-size: 2rem;
-}
-
-.contagem {
-  padding: 1rem;
-}
-
-.numeros {
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.historia-container {
-  width: 100%;
-  padding: 0 20px;
-}
-
-.historia-bloco {
-  flex-direction: column;
-  text-align: center;
-}
-
-.imagem-historia {
-  width: 100%;
-}
-
-.slider-container {
-  max-width: 100%;
-}
-
-.bl-cr1 {
-  width: 90%;
-  max-width: 300px;
-}
-
-.recepcao-header {
-  flex-direction: column;
-}
-
-.imagem-recepcao, .detalhes-recepcao {
-  width: 100%;
-  text-align: center;
+.descricao {
+  font-size: 1rem;
 }
 }
 
 /* =========================
    📱 Responsividade Mobile
-   ========================= */
+   =========================
    @media (max-width: 768px) {
-    /* Menu Mobile */
+    /* Menu Mobile
     .nav-menu {
       display: none;
       flex-direction: column;
@@ -976,9 +1022,9 @@ footer {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh; /* Faz o menu ocupar toda a tela */
+      height: 100vh; /* Faz o menu ocupar toda a tela 
       background-color: white;
-      padding-top: 80px; /* Espaço para o logo */
+      padding-top: 80px; /* Espaço para o logo 
       text-align: center;
       z-index: 1001;
     }
@@ -1010,15 +1056,6 @@ footer {
       cursor: pointer;
       color: #000080;
   }
-  
-    /* Ajuste das seções */
-    #banner {
-      height: 80vh;
-    }
-  
-    .banner-informacao h1 {
-      font-size: 2rem;
-    }
   
     .contagem {
       padding: 1rem;

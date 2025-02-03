@@ -10,15 +10,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
             <img src="Imagens/Header/Logo C&M.png" alt="Logo" class="logo">
         </div>
+
+        <button class="btn-abrir-menu" id="btn-menu">☰</button>
+
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#banner">Início</a></li>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                    <li><a href="#cerimonia">Cerimônia</a></li>
+                    <li><a href="#recepcao">Recepção</a></li>
+                    <li><a href="#lista-de-presentes">Lista de Presentes</a></li>
+                    <li><a href="#rsvp">Confirmar Presença</a></li>
+                </ul>
+            </nav>
+
+        </div>
     
-        <!-- Botão Hamburguer -->
-        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <div class="overlay-menu" id="overlay-menu"></div>
     
         <nav class="nav-menu" id="nav-menu">
             <ul>
@@ -41,7 +61,7 @@
                 <img src="Imagens/Banner/IMG_7233_Neto.jpg" class="slide" alt="Foto 4">
                 <img src="Imagens/Banner/IMG_6840.jpg" class="slide" alt="Foto 5">
             </div>
-            <!--<div class="overlay"></div>-->
+
             <div class="banner-informacao">
                 <h1>Ciceliane & Matheus</h1>
             </div>
@@ -147,7 +167,7 @@
                                 <img src="Imagens/Cerimônia/Noiva.jpeg" class="imagem-slide" alt="Noiva">
                                 <h3 class="titulo-especial">Noiva</h3>
                                 <div class="bolas-container">
-                                    <div class="bola" style="background-color: white;"></div>
+                                    <div class="bola.active" style="background-color: white;"></div>
                                 </div>
                                 <p class="descricao-paleta">Branco</p>
                             </div>
@@ -167,7 +187,7 @@
                                 <div class="bolas-container">
                                     <div class="bola" style="background-color: #7E8484;"></div>
                                 </div>
-                                <p class="descricao-paleta">Tons sofisticados.</p>
+                                <p class="descricao-paleta">Tons de Cinza Escuro</p>
                             </div>
 
                             <div class="bl-cr1">
@@ -176,7 +196,7 @@
                                 <div class="bolas-container">
                                     <div class="bola" style="background-color: #FFA0A0;"></div>
                                 </div>
-                                <p class="descricao-paleta">Tons sofisticados e elegantes.</p>
+                                <p class="descricao-paleta">Tons de Rosê</p>
                             </div>
 
                             <div class="bl-cr1">
@@ -185,7 +205,7 @@
                                 <div class="bolas-container">
                                     <div class="bola" style="background-color: #D9D9D9;"></div>
                                 </div>
-                                <p class="descricao-paleta">Tons sofisticados e elegantes.</p>
+                                <p class="descricao-paleta">Tons de Cinza Claro</p>
                             </div>
 
                             <div class="bl-cr1">
@@ -194,16 +214,16 @@
                                 <div class="bolas-container">
                                     <div class="bola" style="background-color: #93CBFF;"></div>
                                 </div>
-                                <p class="descricao-paleta">Tons sofisticados e elegantes.</p>
+                                <p class="descricao-paleta">Tons de Azul</p>
                             </div>
 
                             <div class="bl-cr1">
                                 <img src="Imagens/Cerimônia/Convidados.jpg" class="imagem-slide" alt="Convidados">
                                 <h3 class="titulo-paleta">Convidados</h3>
                                 <div class="bolas-container">
-                                    <div class="bola" style="background-color: #8e44ad;"></div>
-                                    <div class="bola" style="background-color: #e74c3c;"></div>
-                                    <div class="bola" style="background-color: #95a5a6;"></div>
+                                    <div class="bola" style="background-color: #f7e7ce;"></div>
+                                    <div class="bola" style="background-color: #800020;"></div>
+                                    <div class="bola" style="background-color: #e6e6fa;"></div>
                                 </div>
                                 <p class="descricao-paleta">Tons sofisticados e elegantes.</p>
                             </div>
@@ -231,12 +251,12 @@
                 </div>
 
                 <script>
-                    lucide.createIcons(); // Ativa os ícones Lucide
+                    lucide.createIcons();
                 </script>
         
                 <div class="linha-tempo">
                     <div class="evento">
-                        <span class="horario">16h00</span>
+                        <span class="horario">15h30</span>
                         <div class="icone-evento">🔷</div>
                         <span class="descricao">INÍCIO DA CERIMÔNIA RELIGIOSA</span>
                     </div>

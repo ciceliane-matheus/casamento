@@ -1,4 +1,19 @@
-document.addEventListener("DOMContentLoaded", function() {
+let btnMenu = document.getElementById('btn-menu')
+let menu = document.getElementById('menu-mobile')
+let overlay = document.getElementById('overlay-menu')
+
+btnMenu.addEventListener('click', ()=>{
+    menu.classList.add('abrir-menu')
+})
+
+menu.addEventListener('click', ()=>{
+    menu.classList.remove('abrir-menu')
+})
+
+overlay.addEventListener('click', ()=>{
+    menu.classList.remove('abrir-menu')
+})
+/*document.addEventListener("DOMContentLoaded", function() {
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("nav-menu");
 
@@ -13,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
           navMenu.classList.remove("active");
       });
   });
-});
+});*/
 
 //Script para o Contador
 const contadorDate = new Date("2025-04-21T00:00:00").getTime();
