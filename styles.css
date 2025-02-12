@@ -437,19 +437,6 @@ header nav ul li a:hover {
   text-transform: uppercase;
 }
 
-.bolas-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.bola {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-}
-
 .conteudo-cerimonia {
   display: flex;
   flex-direction: column;
@@ -463,6 +450,10 @@ header nav ul li a:hover {
   margin-bottom: 3rem;
   color: #000080;
   text-align: center;
+}
+
+.bl-cr1.active .bolas-container .bola {
+  padding-top: 10px;
 }
 
 .bloco-cerimonia {
@@ -541,7 +532,6 @@ header nav ul li a:hover {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 15px;
 }
 
 .bola {
@@ -549,6 +539,7 @@ header nav ul li a:hover {
   height: 40px;
   border-radius: 50%;
   border: 2px solid #ddd;
+  margin-bottom: 12px;
 }
 
 .descricao-paleta {
@@ -803,7 +794,7 @@ text-align: center;
 
 .horario {
   font-size: 3rem; 
-  color: #ac8010;
+  color: black;
   width: 30%;
   text-align: center;
 }
@@ -1048,9 +1039,10 @@ footer {
     text-align: center;
   }
 
-  /*CERIMÔNIA*/
+  /*CERIMÔNIA*/ 
   .aviso-traje {
      width: 100%;
+     margin-bottom: -60px;
   }
 
   .aviso-texto {

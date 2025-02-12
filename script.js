@@ -120,6 +120,13 @@ document.addEventListener("DOMContentLoaded", function () {
         slides[currentIndex].classList.add("active");
     }
 
+    setTimeout(() => {
+        const activeBall = document.querySelector(".bl-cr1.active .bolas-container .bola");
+        if (activeBall) {
+            activeBall.style.marginTop = "10px";
+        }
+    }, 50); // Pequeno delay para garantir que a transição terminou    
+
     prevButton.addEventListener("click", function () {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
         updateSlidePosition();
