@@ -61,16 +61,14 @@
 
     <main>
         <section id="banner">
+            <div class="banner-informacao"><h1>Ciceliane & Matheus</h1></div>
             <div class="slideshow-container">
+                <div class="overlay-banner"></div>
                 <img src="Imagens/Banner/IMG_6763.jpg" class="slide active" alt="Foto 1">
                 <img src="Imagens/Banner/IMG_6955.jpg" class="slide" alt="Foto 2">
                 <img src="Imagens/Banner/IMG_6791.jpg" class="slide" alt="Foto 3">
                 <img src="Imagens/Banner/IMG_7233_Neto.jpg" class="slide" alt="Foto 4">
                 <img src="Imagens/Banner/IMG_6840.jpg" class="slide" alt="Foto 5">
-            </div>
-
-            <div class="banner-informacao">
-                <h1>Ciceliane & Matheus</h1>
             </div>
         </section>    
 
@@ -148,8 +146,7 @@
                 <p class="titulo-cerimonia">CERIMÔNIA</p>
         
                 <div class="aviso-traje">
-                    <p class="aviso-texto">Para ajudar no casamento, peço que acessem a vestimenta ideal para você.</p>
-                    
+                    <p class="aviso-texto">Queridos amigos e familiares,<br><br>Nossa cerimônia acontecerá no fim da tarde, um momento especial para celebrarmos o amor e a união. Para tornar esse dia ainda mais harmonioso, pedimos que todos se vistam de forma elegante. Abaixo, compartilhamos algumas orientações para que todos estejam alinhados ao estilo do casamento:</p>
                     <div class="bloco-restrito">
                         <h3 class="titulo-restrito">Evite utilizar as seguintes cores de vestimentas:</h3>
                         <div class="bolas-container">
@@ -164,7 +161,7 @@
                 </div>
         
                 <div class="bloco-cerimonia">
-                    <p class="traje-descricao">Confira as cores ideias para você no dia!</p>
+                    <p class="traje-descricao">Confira as cores ideais para você no dia!</p>
         
                     <div class="slider-container">
                         <button class="prev-btn">&#10094;</button>
@@ -265,25 +262,37 @@
                     <div class="evento">
                         <span class="horario">15h30</span>
                         <div class="icone-evento">🔷</div>
-                        <span class="descricao">INÍCIO DA CERIMÔNIA RELIGIOSA</span>
+                        <span class="descricao">CERIMÔNIA RELIGIOSA</span>
                     </div>
         
                     <div class="evento">
-                        <span class="descricao">INÍCIO DA CERIMÔNIA RELIGIOSA</span>
+                        <span class="descricao">LEILÃO SECRETO</span>
                         <div class="icone-evento">🔷</div>
-                        <span class="horario">18h00</span>
+                        <span class="horario">17h30</span>
                     </div>
         
                     <div class="evento">
                         <span class="horario">18h30</span>
                         <div class="icone-evento">🔷</div>
-                        <span class="descricao">INÍCIO DA CERIMÔNIA RELIGIOSA</span>
+                        <span class="descricao">BUFFET</span>
                     </div>
         
                     <div class="evento">
-                        <span class="descricao">INÍCIO DA CERIMÔNIA RELIGIOSA</span>
+                        <span class="descricao">DANÇA DOS NOIVOS</span>
                         <div class="icone-evento">🔷</div>
-                        <span class="horario">22h30</span>
+                        <span class="horario">19h30</span>
+                    </div>
+
+                    <div class="evento">
+                        <span class="descricao">FESTA</span>
+                        <div class="icone-evento">🔷</div>
+                        <span class="horario">20h30</span>
+                    </div>
+
+                    <div class="evento">
+                        <span class="descricao">ENCERRAMENTO</span>
+                        <div class="icone-evento">🔷</div>
+                        <span class="horario">21h00</span>
                     </div>
                 </div>
             </div>
@@ -297,56 +306,129 @@
                     <img src="Imagens/Geral/Bemol.png" alt="Presente 1">
                     <h3>Bemol</h3>
                     <p>Agrade o noivo</p>
-                    <button onclick="window.open('https://www.bemol.com.br/')"> Presentear</button>
+                    <button onclick="window.open('http://chat.bemol.com.br/cicelianematheus21')"> Presentear</button>
                 </div>
                 <div class="presente-item">
                     <img src="Imagens/Geral/Havan.png" alt="Presente 2">
                     <h3>Havan</h3>
                     <p>Agrade a noiva</p>
-                    <button onclick="window.open('https://www.havan.com.br/')"> Presentear</button>
+                    <button onclick="window.open('https://lista.havan.com.br//Convidado/ItensListaPresente/812831')"> Presentear</button>
                 </div>
             </div>
         </section>
 
         <section id="rsvp">
-            <h2>Confirme sua presença</h2>
-
-            <form id="rsvp-form" action="https://formsubmit.co/msantos.mktdigital@gmail.com" method="POST">
-
-                <!-- jQuery -->
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <!-- jQuery Mask Plugin -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
-                <input type= "hidden" name="_next" value="https://ciceliane-matheus.github.io/casamento/sucesso.html"/>
-                <input type="hidden" name="_captcha" value="false">
-
+            <h2>CONFIRME SUA PRESENÇA</h2>
+        
+            <p style="color: #d8335f; font-weight: normal;">
+                * O preenchimento deste formulário não garante a confirmação da sua presença.<br>* Você receberá uma mensagem no WhatsApp para validação final.<br>  
+                * A quantidade de acompanhantes está sujeita à aprovação.
+            </p>    
+        
+            <form id="rsvp-form">
                 <label>Nome:</label>
-                <input type="text" name ="name" required>
-                
+                <input type="text" name="nome" id="nome" required>
+        
                 <label>Você vai comparecer?</label>
-                <select name="presenca" required>
-                  <option value="">Selecione...</option>
-                  <option value="Sim">Sim</option>
-                  <option value="Não">Não</option>
-                </select>              
-
+                <select name="presenca" id="presenca" required>
+                    <option value="">Selecione...</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+        
+                <label>Quantidade de acompanhantes:</label>
+                <select name="acompanhantes" id="quantidade_acompanhantes">
+                    <option value="0">Nenhum</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+        
+                <div id="acompanhantes-container"></div>
+        
                 <label>Insira seu contato:</label>
-                <input type="tel" name="tel" placeholder="(xx) xxxxx-xxxx" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" required>
-
-                <script>
-                    $(document).ready(function(){
-                      $('input[name="tel"]').mask('(00) 00000-0000');
-                    });
-                  </script>
-                
+                <input type="tel" name="tel" id="tel" placeholder="(xx) xxxxx-xxxx" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" required>
+        
+                <label>Informe a paleta de cores que você irá usar:</label>
+                <select name="paleta_cores" id="paleta_cores" required>
+                    <option value="">Selecione...</option>
+                    <option value="Verde">Azul Marinho e Dourado</option>
+                    <option value="Bege">Tons Pastel</option>
+                    <option value="Preto">Preto e Branco Clássico</option>
+                    <option value="Nude">Nude e Bege</option>
+                    <option value="Vermelho">Vermelho e Dourado</option>
+                </select>
+        
                 <label>Observações:</label>
-                <textarea name="observacoes"></textarea>
-                
-                <button type="send">Enviar</button>
+                <textarea name="observacoes2" id="observacoes"></textarea>
+        
+                <button type="submit">Enviar</button>
             </form>
-          
-          </section>
+        
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        
+            <script>
+                $(document).ready(function(){
+                    $('#tel').mask('(00) 00000-0000');
+        
+                    $('#quantidade_acompanhantes').change(function() {
+                        var qtd = $(this).val();
+                        var container = $('#acompanhantes-container');
+                        container.html('');
+                        
+                        for (var i = 1; i <= qtd; i++) {
+                            container.append('<label>Nome do Acompanhante ' + i + ':</label>');
+                            container.append('<input type="text" name="acompanhante_' + i + '" class="acompanhante" required>');
+                        }
+                    });
+        
+                    $('#rsvp-form').submit(function(event) {
+                        event.preventDefault(); // Evita o reload da página
+        
+                        // Captura os valores do formulário
+                        let nome = $('#nome').val();
+                        let presenca = $('#presenca').val();
+                        let acompanhantes = $('#quantidade_acompanhantes').val();
+                        let paleta_cores = $('#paleta_cores').val();
+                        let observacoes2 = $('#observacoes').val();
+        
+                        // Captura os nomes dos acompanhantes
+                        let nomesAcompanhantes = [];
+                        $('.acompanhante').each(function() {
+                            nomesAcompanhantes.push($(this).val());
+                        });
+        
+                        // Estrutura o JSON a ser enviado
+                        let dados = {
+                            nome: nome,
+                            presenca: presenca,
+                            acompanhantes: acompanhantes,
+                            paleta_cores: paleta_cores,
+                            observacoes2: observacoes2,
+                            nomes_acompanhantes: nomesAcompanhantes
+                        };
+        
+                        // Envia os dados via fetch
+                        fetch('https://dudstecnologia.com.br/matheus-s/salvar.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(dados)
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert('Formulário enviado com sucesso! Aguarde a confirmação via WhatsApp.');
+                            window.location.href = "https://ciceliane-matheus.github.io/casamento/sucesso.html"; // Redireciona após envio
+                        })
+                        .catch(error => {
+                            console.error('Erro:', error);
+                            alert('Erro ao enviar o formulário. Tente novamente.');
+                        });
+                    });
+                });
+            </script>
+        </section>
         
     </div>
         
