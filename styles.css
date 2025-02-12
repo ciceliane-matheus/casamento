@@ -12,37 +12,36 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
-/* Estilos do Preloader */
 #preloader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f9f9f9; /* Fundo branco */
+  background-color: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   opacity: 1;
-  transition: opacity 0.5s ease-out; /* Transição suave */
+  transition: opacity 0.5s ease-out;
 }
 
 #preloader .spinner {
-  animation: spin 2s linear infinite; /* Animação de rotação */
+  animation: spin 2s linear infinite;
 }
 
 #preloader img {
-  max-width: 150px; /* Tamanho da imagem */
-  border-radius: 50%; /* Bordas arredondadas */
+  max-width: 150px;
+  border-radius: 50%;
 }
 
 .no-scroll {
-  overflow: hidden; /* Remove a rolagem */
-  height: 100%; /* Evita que o conteúdo ultrapasse */
+  overflow: hidden;
+  height: 100%;
 }
 
-/* Animação de rotação */
+/*ANIMAÇÃO DE ROTAÇÃO*/
 @keyframes spin {
   0% {
       transform: rotate(0deg);
@@ -52,7 +51,6 @@
   }
 }
 
-/* Ocultar o preloader */
 #preloader.hidden {
   opacity: 0;
   pointer-events: none;
@@ -74,8 +72,8 @@ body, html {
 }
 
 img {
-  max-width: 100%; /* Garantir que as imagens não excedam a largura do contêiner */
-  height: auto; /* Manter a proporção */
+  max-width: 100%;
+  height: auto;
 }
 
 header {
@@ -83,7 +81,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 10px 20px;
+  padding: 0 40px;
   position: fixed;
   top: 0;
   left: 0;
@@ -123,8 +121,7 @@ header nav ul li {
   text-align: center;
 }
 
-/* 🎯 Menu Mobile */
-
+/*MENU MOBILE*/
 .btn-abrir-menu {
   display: none;
   background: none;
@@ -172,7 +169,7 @@ header nav ul li a:hover {
 #banner {
   position: relative;
   width: 100%;
-  height: 110vh;
+  height: 115vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -206,26 +203,31 @@ header nav ul li a:hover {
   position: center;
 }
 
+.overlay-banner {
+  position: block;
+   color: black;
+ }
+
 .banner-informacao {
   position: absolute;
-  top: 72%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 100%;
   height: 550px;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0); 
-  color: white;
   text-align: center;
-  border-radius: 8px;
+  z-index: 55;
+  transition: none !important;
+  animation: none !important;
 }
 
 .banner-informacao h1 {
   color: white;
-  font-size: 100px;
+  font-size: 350px;
   margin-top: 50px;
   margin-bottom: 50px;
-  font-weight: 400;
+  font-weight: normal;
 }
 
 .linha-horizontal {
@@ -286,9 +288,9 @@ header nav ul li a:hover {
 }
 
 .label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 0.5rem; 
-  color: white; /* Cor das labels */
+  color: white;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-weight: 400; 
@@ -296,7 +298,7 @@ header nav ul li a:hover {
 
 .separador {
   width: 100%;
-  height: 200px; /* Aumenta a altura para cobrir o final e o início das seções */
+  height: 80px;
   background: linear-gradient(to bottom, 
       rgba(255, 255, 255, 1) 0%,  /* Branco (começo da transição) */
       rgba(227, 242, 253, 1) 40%,  /* Azul mais forte no meio */
@@ -309,20 +311,20 @@ header nav ul li a:hover {
   text-align: center;
   background-color: white;
   padding: 50px 20px;
-  position: relative; /* Permite posicionar a linha corretamente */
+  position: relative;
 }
 
 .linha-sobre {
   position: absolute;
-  left: 5%; /* Ajuste a posição da linha conforme necessário */
+  left: 5%;
   bottom: 6%;
   width: 2px;
   height: 80%;
-  background-color: #e5e5e5; /* Cor azul escura */
+  background-color: #e5e5e5;
 }
 
 .titulo-sobre {
-  font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   color: #000080;
   margin-bottom: 40px;
@@ -351,7 +353,7 @@ header nav ul li a:hover {
   justify-content: space-between;
   width: 80%;
   max-width: 1000px;
-  gap: 40px; /* Espaço entre a imagem e o texto */
+  gap: 40px;
 }
 
 .imagem-historia {
@@ -369,10 +371,10 @@ header nav ul li a:hover {
 }
 
 .texto-historia p {
-  font-family: 'Montserrat', sans-serif; /* Fonte padrão */
+  font-family: 'Montserrat', sans-serif;
   color: #000080;
   margin-bottom: 10px;
-  font-weight: 400; /* Espessura normal para as labels */
+  font-weight: 400;
 }
 
 .texto-italico {
@@ -382,7 +384,6 @@ header nav ul li a:hover {
   color: #ce6a84;
 }
 
-/* Título do texto */
 .texto-historia h3 {
   font-size: 5.5rem;
   color: #000080;
@@ -404,7 +405,7 @@ header nav ul li a:hover {
   padding: 20px;
   font-size: 1rem;
   text-align: center;
-  width: 150%;
+  width: 160%;
   height: 35vh;
 }
 
@@ -431,7 +432,7 @@ header nav ul li a:hover {
 .titulo-restrito {
   font-size: 1rem;
   font-weight: bold;
-  color: red;
+  color: #d8335f;
   margin-bottom: 40px;
   text-transform: uppercase;
 }
@@ -543,8 +544,6 @@ header nav ul li a:hover {
   margin-bottom: 15px;
 }
 
-
-/* Criando as bolas coloridas */
 .bola {
   width: 40px;
   height: 40px;
@@ -552,7 +551,6 @@ header nav ul li a:hover {
   border: 2px solid #ddd;
 }
 
-/* Descrição abaixo das bolas */
 .descricao-paleta {
   font-size: 0.9rem;
   color: #555;
@@ -600,7 +598,6 @@ header nav ul li a:hover {
   transition: transform 0.5s ease-in-out;
 }
 
-/* Ajusta os botões para ficarem nas laterais corretas */
 .prev-btn, .next-btn {
   position: absolute;
   top: 50%;
@@ -707,7 +704,7 @@ header nav ul li a:hover {
 
 #recepcao {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to bottom, #ffffff, #f5faff, #e0ebf7, #f5faff, white);
+  background: linear-grMontserratadient(to bottom, #ffffff, #f5faff, #e0ebf7, #f5faff, white);
   padding: 50px 20px;
   text-align: center;
 }
@@ -796,15 +793,23 @@ text-align: center;
   position: relative;
 }
 
+.evento:nth-child(odd) .horario {
+  order: -1;
+}
+
+.evento:nth-child(odd) .descricao {
+  order: 1;
+}
+
 .horario {
   font-size: 3rem; 
-  color: #000080;
+  color: #ac8010;
   width: 30%;
   text-align: center;
 }
 
 .descricao {
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
   color: #000080;
   width: 30%;
   text-align: center;
@@ -817,7 +822,8 @@ text-align: center;
 }
 
 #rsvp {
-  max-width: 500px;
+  font-family: 'Montserrat', sans-serif;
+  max-width: 700px;
   margin: 50px auto;
   padding: 20px;
   background: #fff;
@@ -827,23 +833,31 @@ text-align: center;
   font-family: "Arial", sans-serif;
 }
 
+#rsvp p {
+  font-size: 0.9rem;
+  text-align: left;
+  margin: 10px;
+}
+
 #rsvp h2 {
+  color: #000080;
   font-size: 24px;
   margin-bottom: 15px;
-  color: #333;
+  font-weight: normal;
 }
 
 #rsvp-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  color: #000080;
 }
 
 #rsvp-form label {
   font-size: 14px;
   font-weight: bold;
   text-align: left;
-  color: #555;
+  color: #000080;
 }
 
 #rsvp-form input,
@@ -861,7 +875,7 @@ text-align: center;
 #rsvp-form input:focus,
 #rsvp-form select:focus,
 #rsvp-form textarea:focus {
-  border-color: #a855f7;
+  border-color: #000080;
   outline: none;
   background: #fff;
 }
@@ -947,7 +961,7 @@ footer {
   }
 
   .btn-abrir-menu {
-    display: block; /* Mostra o botão de menu */
+    display: block;
     color: #000080;
   }
   
@@ -976,17 +990,17 @@ footer {
     display: none;
   }
    #banner {
-    height: 80vh;
+    height: 100vh;
   }
 
   .banner-informacao {
     justify-content: center;
     text-align: center;
-    margin-top: 100px;
+    top: 75%;
   }
 
   .banner-informacao h1 {
-    font-size: 3rem;
+    font-size: 5.8rem;
     color: white;
   }
 
@@ -995,12 +1009,14 @@ footer {
     width: 70px;
     height: 70px;
     margin-bottom: 0px;
-    margin: 0 -15px; /* Adiciona espaçamento lateral */
+    margin: 0 -15px;
   }
   .label {
-    font-size: 0.5rem;
+    font-size: 0.48rem;
   }
+
   /*SOBRE*/
+
   .linha-sobre{
     display: none;
   }
@@ -1023,43 +1039,55 @@ footer {
     width: 100%;
   }
 
+  .texto-historia {
+    margin-top: -30px;
+  }
+
   .texto-historia h3 {
     font-size: 4rem;
     text-align: center;
   }
+
   /*CERIMÔNIA*/
   .aviso-traje {
      width: 100%;
   }
+
+  .aviso-texto {
+    margin-top: 10px;
+    text-align: center;
+}
+
   .bloco-restrito {
-    padding: 40px;
+    margin-top: -100px;
+    padding: 20px;
   }
   .prev-btn { left: 420px; }
   .next-btn { right: 420px; }
   /*RECEPÇÃO*/
   .recepcao-header {
     display: flex;
-    flex-direction: column; /* Empilha os elementos verticalmente */
-    align-items: center; /* Centraliza os itens */
-    text-align: center; /* Centraliza o texto */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .imagem-recepcao {
-    width: 100%; /* Garante que a imagem ocupe toda a largura */
-    order: -1; /* Coloca a imagem antes dos detalhes */
+    width: 100%;
+    order: -1;
 }
 
 .detalhes-recepcao {
-    margin-top: 20px; /* Adiciona espaçamento entre a imagem e os detalhes */
-    width: 100%; /* Garante que ocupe toda a largura */
+    margin-top: 20px;
+    width: 100%;
 }
 .detalhes-recepcao p {
   font-size: 1rem;
 }
 .evento, .horario {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 .descricao {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 }
