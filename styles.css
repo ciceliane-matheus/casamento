@@ -230,6 +230,14 @@ header nav ul li a:hover {
   font-weight: normal;
 }
 
+.banner-informacao p {
+  color: white;
+  font-size: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-weight: normal;
+}
+
 .linha-horizontal {
   border: none;
   border-top: 1px solid #000080;
@@ -659,24 +667,24 @@ header nav ul li a:hover {
 }
 
 .presente-item img {
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 15px; 
+  width: 160px; /* Fixed width */
+  height: 160px; /* Fixed height */
+  object-fit: cover; /* Maintain aspect ratio */
 }
 
-.presente-item h3 {
-  font-family: 'Montserrat', sans-serif; 
-  font-size: 1.4rem;
-  margin: 10px 0 5px 0;
+
+.presente-item h3, .presente-item h4 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center; /* Center the text */
+  margin: 10px 0; /* Consistent margin */
 }
+
 
 .presente-item p {
-  font-size: 1rem;
-  color: #000080;
-  margin-bottom: 15px;
+  text-align: center; /* Center the description text */
+  margin: 5px 0; /* Consistent margin */
 }
+
 
 .presente-item button {
   background-color: #000080;

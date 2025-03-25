@@ -47,7 +47,7 @@ overlay.addEventListener('click', ()=>{
 })
 
 //Script para o Contador
-const contadorDate = new Date("2025-04-21T00:00:00").getTime();
+const contadorDate = new Date("2025-04-21T00:16:00").getTime();
 setInterval(() => {
     const now = new Date().getTime();
     const distance = contadorDate - now;
