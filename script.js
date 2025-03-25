@@ -2,7 +2,7 @@
 const preloader = document.getElementById("preloader");
 
 // Bloquear o scroll adicionando a classe 'no-scroll' ao body
-document.body.classList.add("no-scroll");
+//document.body.classList.add("no-scroll");
 
 // Remover o preloader e desbloquear o scroll
 window.addEventListener("load", () => {
