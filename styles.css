@@ -1003,6 +1003,11 @@ footer {
     font-size: 5.8rem;
     color: white;
   }
+  
+  .banner-informacao p {
+    font-size: 3.8rem;
+    color: white;
+  }
 
   /*CONTADOR*/
   .bloco-contagem {
