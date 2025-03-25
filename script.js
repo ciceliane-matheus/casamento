@@ -47,7 +47,7 @@ overlay.addEventListener('click', ()=>{
 })
 
 //Script para o Contador
-const contadorDate = new Date("2025-04-21T00:00:00").getTime();
+const contadorDate = new Date("2025-04-21T00:16:00").getTime();
 setInterval(() => {
     const now = new Date().getTime();
     const distance = contadorDate - now;
@@ -119,6 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         slides[currentIndex].classList.add("active");
     }
+
+    setTimeout(() => {
+        const activeBall = document.querySelector(".bl-cr1.active .bolas-container .bola");
+        if (activeBall) {
+            activeBall.style.marginTop = "10px";
+        }
+    }, 50); // Pequeno delay para garantir que a transição terminou    
 
     prevButton.addEventListener("click", function () {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;

@@ -230,6 +230,14 @@ header nav ul li a:hover {
   font-weight: normal;
 }
 
+.banner-informacao p {
+  color: white;
+  font-size: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-weight: normal;
+}
+
 .linha-horizontal {
   border: none;
   border-top: 1px solid #000080;
@@ -437,19 +445,6 @@ header nav ul li a:hover {
   text-transform: uppercase;
 }
 
-.bolas-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.bola {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-}
-
 .conteudo-cerimonia {
   display: flex;
   flex-direction: column;
@@ -463,6 +458,10 @@ header nav ul li a:hover {
   margin-bottom: 3rem;
   color: #000080;
   text-align: center;
+}
+
+.bl-cr1.active .bolas-container .bola {
+  padding-top: 10px;
 }
 
 .bloco-cerimonia {
@@ -541,7 +540,6 @@ header nav ul li a:hover {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 15px;
 }
 
 .bola {
@@ -549,6 +547,7 @@ header nav ul li a:hover {
   height: 40px;
   border-radius: 50%;
   border: 2px solid #ddd;
+  margin-bottom: 12px;
 }
 
 .descricao-paleta {
@@ -668,24 +667,24 @@ header nav ul li a:hover {
 }
 
 .presente-item img {
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 15px; 
+  width: 160px; /* Fixed width */
+  height: 160px; /* Fixed height */
+  object-fit: cover; /* Maintain aspect ratio */
 }
 
-.presente-item h3 {
-  font-family: 'Montserrat', sans-serif; 
-  font-size: 1.4rem;
-  margin: 10px 0 5px 0;
+
+.presente-item h3, .presente-item h4 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center; /* Center the text */
+  margin: 10px 0; /* Consistent margin */
 }
+
 
 .presente-item p {
-  font-size: 1rem;
-  color: #000080;
-  margin-bottom: 15px;
+  text-align: center; /* Center the description text */
+  margin: 5px 0; /* Consistent margin */
 }
+
 
 .presente-item button {
   background-color: #000080;
@@ -769,18 +768,16 @@ text-align: center;
   flex-direction: column;
   align-items: center;
   position: relative;
-  gap: 50px; 
-  padding: 50px 0;
+  gap: 100px; 
 }
 
 .linha-tempo::before {
   content: "";
   position: absolute;
   width: 3px;
-  height: 90%; 
+  height: 100%; 
   background-color: #000080;
   left: 50%;
-  top: 6.5%;
   transform: translateX(-50%);
 }
 
@@ -795,30 +792,33 @@ text-align: center;
 
 .evento:nth-child(odd) .horario {
   order: -1;
+
 }
 
 .evento:nth-child(odd) .descricao {
   order: 1;
+  text-align: right;
+}
+
+.evento:nth-child(even) .descricao {
+  text-align: left;
 }
 
 .horario {
-  font-size: 3rem; 
-  color: #ac8010;
-  width: 30%;
+  width: 10%;
   text-align: center;
 }
 
 .descricao {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: #000080;
-  width: 30%;
+  width: 50%;
   text-align: center;
 }
 
 .icone-evento {
-  font-size: 2rem; 
-  color: #000080;
-  margin: 0 20px;
+  width: 3%;
+  position: absolute; left: 50%; transform: translateX(-50%)
 }
 
 #rsvp {
@@ -1048,9 +1048,10 @@ footer {
     text-align: center;
   }
 
-  /*CERIMÔNIA*/
+  /*CERIMÔNIA*/ 
   .aviso-traje {
      width: 100%;
+     margin-bottom: -60px;
   }
 
   .aviso-texto {
@@ -1084,10 +1085,31 @@ footer {
 .detalhes-recepcao p {
   font-size: 1rem;
 }
-.evento, .horario {
-  font-size: 2rem;
+
+.linha-tempo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 100px; 
 }
+
+.horario {
+  width: 40%;
+  text-align: center;
+  padding: 0 0 0 20px;
+}
+
 .descricao {
-  font-size: 0.8rem;
+  font-size: 1rem;
+  color: #000080;
+  width: 100%;
+  text-align: center;
 }
+
+.icone-evento {
+  width: 6%;
+  position: absolute; left: 50%; transform: translateX(-50%)
+}
+
 }
