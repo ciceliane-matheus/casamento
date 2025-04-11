@@ -1,391 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ciceliane e Matheus</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ciceliane & Matheus</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Abril+Fatface&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!--<div id="preloader">
-        <div class="spinner">
-                <img src="Imagens/Header/Logo C&M.png" alt="Preloader">
+  <header>
+
+    <button class="btn-abrir-menu" id="btn-menu">☰</button>
+
+    <div class="menu-mobile" id="menu-mobile">
+      <div class="btn-fechar">
+        <i class="bi bi-x-lg"></i>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#banner">Início</a></li>
+          <li><a href="#sobre">Nossa História</a></li>
+          <li><a href="#recepcao">Recepção</a></li>
+          <li><a href="#lista-de-presentes">Comprar Presente</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="overlay-menu" id="overlay-menu"></div>
+
+    <nav class="nav-menu" id="nav-menu">
+      <ul>
+        <li><a href="#banner">Início</a></li>
+        <li><a href="#sobre">Nossa História</a></li>
+        <li><a href="#recepcao">Recepção</a></li>
+        <li><a href="#lista-de-presentes">Comprar Presente</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Seção Banner -->
+    <section id="banner">
+      <div class="banner-informacao">
+        <h1>Ciceliane & Matheus</h1>
+        <p>21. 04. 2025</p>
+      </div>
+
+      <div class="carousel">
+        <button class="arrow arrow-left" id="prev">&lt;</button>
+        <ul class="carousel-track">
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-205.jpg" alt="Imagem 1"></li>
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-259.jpg" alt="Imagem 2"></li>
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-132.jpg" alt="Imagem 3"></li>
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-189.jpg" alt="Imagem 4"></li>
+          <li class="carousel-slide active"><img src="Imagens/Ensaio/favacho-49.jpg" alt="Imagem 5"></li>
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-208.jpg" alt="Imagem 6"></li>
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-229.jpg" alt="Imagem 7"></li>
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-234.jpg" alt="Imagem 8"></li>
+          <li class="carousel-slide"><img src="Imagens/Ensaio/favacho-279.jpg" alt="Imagem 9"></li>
+        </ul>
+        <button class="arrow arrow-right" id="next">&gt;</button>
+      </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre">
+      <div class="linha-sobre"></div>
+      <div class="conteudo-sobre">
+        <p class="titulo-sobre">CONHEÇA NOSSA HISTÓRIA</p>
+        <div class="historia-container">
+          <div class="historia-bloco">
+            <img src="Imagens/Ensaio/favacho-64.jpg" class="imagem-historia" alt="Imagem 1">
+            <div class="texto-historia">
+              <h3>O começo de tudo – Amizade</h3>
+              <p class="texto-italico">"Às vezes, os melhores encontros começam com uma boa amizade."</p><br>
+              <p>Nos conhecemos em 2018, quando menos esperávamos, e desde então a conexão foi instantânea. Entre risadas, conversas intermináveis e momentos inesquecíveis, nossa amizade foi crescendo e nos mostrando que algo especial estava acontecendo. 
+                Mal sabíamos que estávamos escrevendo o primeiro capítulo da nossa história de amor.</p>
+            </div>
+          </div>
+          <div class="historia-bloco inverso">
+            <div class="texto-historia">
+              <h3>Crescendo juntos – Namoro</h3>
+              <p class="texto-italico">O amor é construído dia a dia, com carinho, respeito e muitas aventuras juntos.</p>
+              <p>Com o tempo, percebemos que aquilo que sentíamos ia muito além de uma amizade. Era amor, daqueles que aquecem o coração e tornam qualquer momento especial. 
+                Juntos, passamos por desafios, aprendemos um com o outro e vivemos experiências incríveis. O namoro nos trouxe maturidade e ainda mais certeza de que éramos feitos um para o outro.</p>
+            </div>
+            <img src="Imagens/Ensaio/favacho-49.jpg" class="imagem-historia" alt="Imagem 2">
+          </div>
+          <div class="historia-bloco">
+            <img src="Imagens/Ensaio/favacho-249.jpg" class="imagem-historia" alt="Imagem 3">
+            <div class="texto-historia">
+              <h3>O próximo passo – Casamento</h3>
+              <p class="texto-italico">O começo do nosso 'para sempre'.</p>
+              <p>Depois de tantos momentos vividos, chegou a hora de dar um novo passo. O casamento é o símbolo do nosso compromisso, da nossa união e do amor que construímos ao longo dos anos. 
+                Estamos animados para celebrar esse momento com aqueles que mais amamos e iniciar essa nova fase das nossas vidas, juntos, como sempre sonhamos.</p>
+            </div>
+          </div>
         </div>
-    </div>-->
+      </div>
+    </section>
 
-    <header>
-        <div class="logo-container">
-            <img src="Imagens/Header/Logo C&M.png" alt="Logo" class="logo">
+    <!-- Seção de Contagem Regressiva -->
+    <section class="contagem">
+      <p class="titulo-contagem">CONTAGEM REGRESSIVA</p>
+      <hr class="linha-contagem">
+      <div class="numeros">
+        <div class="bloco-contagem">
+          <div class="numero" id="dias"></div>
+          <div class="label">DIAS</div>
         </div>
-
-        <button class="btn-abrir-menu" id="btn-menu">☰</button>
-
-        <div class="menu-mobile" id="menu-mobile">
-            <div class="btn-fechar">
-                <i class="bi bi-x-lg"></i>
-            </div>
-
-            <nav>
-                <ul>
-                    <li><a href="#banner">Início</a></li>
-                    <li><a href="#sobre">Sobre nós</a></li>
-                    <li><a href="#cerimonia">Cerimônia</a></li>
-                    <li><a href="#recepcao">Recepção</a></li>
-                    <li><a href="#lista-de-presentes">Comprar Presente</a></li>
-                    <li><a href="#rsvp">Confirmar Presença</a></li>
-                </ul>
-            </nav>
-
+        <div class="bloco-contagem">
+          <div class="numero" id="horas"></div>
+          <div class="label">HORAS</div>
         </div>
-    
-        <div class="overlay-menu" id="overlay-menu"></div>
-    
-        <nav class="nav-menu" id="nav-menu">
-            <ul>
-                <li><a href="#banner">Início</a></li>
-                <li><a href="#sobre">Sobre nós</a></li>
-                <li><a href="#cerimonia">Cerimônia</a></li>
-                <li><a href="#recepcao">Recepção</a></li>
-                <li><a href="#lista-de-presentes">Comprar presente</a></li>
-                <li><a href="#rsvp">Confirmar Presença</a></li>
-            </ul>
-        </nav>
-    </header>   
+        <div class="bloco-contagem">
+          <div class="numero" id="minutos"></div>
+          <div class="label">MINUTOS</div>
+        </div>
+        <div class="bloco-contagem">
+          <div class="numero" id="segundos"></div>
+          <div class="label">SEGUNDOS</div>
+        </div>
+      </div>
+    </section>
 
-    <main>
-        <section id="banner">
-            <div class="banner-informacao"><h1>Ciceliane & Matheus</h1><br><p>21 de Abril de 2025</p></div>
-            <div class="slideshow-container">
-                <div class="overlay-banner"></div>
-                <img src="Imagens/Banner/IMG_7233_Neto.jpg" class="slide active" alt="Foto 1">
-                <img src="Imagens/Banner/IMG_6763.jpg" class="slide" alt="Foto 2">
-                <img src="Imagens/Banner/IMG_6840.jpg" class="slide" alt="Foto 3">
-                <img src="Imagens/Banner/IMG_7477.jpg" class="slide" alt="Foto 4">
+    <section id="recepcao">
+      <p class="titulo-recepcao1">RECEPÇÃO</p>
+      <div class="recepcao-container">
+          <div class="recepcao-header">
+              <img src="Imagens/Recepção/Local.png" alt="Local da recepção" class="imagem-recepcao">
+              <div class="detalhes-recepcao">
+                  <h2 class="titulo-recepcao">Chácara Monte Rey</h2>
+                  <p class="endereco-recepcao">
+                    Nº 450, Vila Tredecim - Tarumã Açu<br>Manaus - AM
+                  </p>
+                  <button onclick="window.open('https://www.google.com/maps/dir//N%C2%BA+450,+Vila+Tredecim+-+Tarum%C3%A3+A%C3%A7u,+Manaus+-+AM/@-2.9628615,-60.1825705,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x926c3df421b35a11:0xdc386916479258b8!2m2!1d-60.1001685!2d-2.9628646?entry=ttu&g_ep=EgoyMDI1MDQwNy4wIKXMDSoASAFQAw%3D%3D')">Google Maps</button>
+                  <div class="icone-localizacao">
+                      <i data-lucide="map-pin"></i>
+                  </div>
+              </div>
+          </div>
 
-            </div>
-        </section>    
+          <script>
+              lucide.createIcons();
+          </script>
+  
+          <div class="linha-tempo">
+              <div class="evento">
+                  <span class="horario"><img src="Imagens/Recepção/church_6535298.png" alt=""></span>
+                  <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
+                  <span class="descricao"><b>16h00</b><br>Início da Cerimônia</span>
+              </div>
+  
+              <div class="evento">
+                  <span class="descricao"><b>17h30</b><br>Sessão de Fotos</span>
+                  <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
+                  <span class="horario"><img src="Imagens/Recepção/camera_16494636.png" alt=""></span>
+              </div>
+  
+              <div class="evento">
+                  <span class="horario"><img src="Imagens/Recepção/waiter_473336.png" alt=""></span>
+                  <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
+                  <span class="descricao"><b>18h00</b><br>Liberação do Buffet</span>
+              </div>
+  
+              <div class="evento">
+                  <span class="descricao"><b>19h30</b><br>Noivos na Pista!</span>
+                  <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
+                  <span class="horario"><img src="Imagens/Recepção/dance_3074317.png" alt=""></span>
+              </div>
 
-        <section class="contagem">
-            <p class="titulo-contagem">CONTAGEM REGRESSIVA</p>
-            <hr class="linha-contagem">
-            <div class="numeros">
-                <div>
-                    <div class="bloco-contagem">
-                        <div class="numero" id="dias">90</div>
-                        <div class="label">DIAS</div>
-                    </div>    
-                </div>
-                <div>
-                    <div class="bloco-contagem">
-                        <div class="numero" id="horas">90</div>
-                        <div class="label">HORAS</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="bloco-contagem">
-                        <div class="numero" id="minutos">90</div>
-                        <div class="label">MINUTOS</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="bloco-contagem">
-                        <div class="numero" id="segundos">90</div>
-                        <div class="label">SEGUNDOS</div>
-                    </div>
-                </div>
-            </div>
-        </section>        
+              <div class="evento">
+                  <span class="descricao"><b>20h00</b><br>Festa Liberada!</span>
+                  <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
+                  <span class="horario"><img src="Imagens/Recepção/dance_1997669.png" alt=""></span>
+              </div>
 
-         <div class="separador"></div>
+              <div class="evento">
+                  <span class="descricao"><b>22h30</b><br>Encerramento</span>
+                  <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
+                  <span class="horario"><img src="Imagens/Recepção/thank-you_5486257.png" alt=""></span>
+              </div>
+          </div>
+      </div>
+    </section>
 
-         <section id="sobre">
-            <div class="linha-sobre"></div>
-            <div class="conteudo-sobre">
-                <p class="titulo-sobre">CONHEÇA NOSSA HISTÓRIA</p>
-        
-                <div class="historia-container">
-                    <div class="historia-bloco">
-                        <img src="Imagens/Sobre/IMG_7254_Neto.jpg" class="imagem-historia" alt="Foto do casal">
-                        <div class="texto-historia">
-                            <h3>O começo de tudo – Amizade</h3>
-                            <p class="texto-italico" style="color: #ce6a84">"Às vezes, os melhores encontros começam com uma boa amizade."</p>
-                            <P>Nos conhecemos em 2018, quando menos esperávamos, e desde então a conexão foi instantânea. Entre risadas, conversas intermináveis e momentos inesquecíveis, nossa amizade foi crescendo e nos mostrando que algo especial estava acontecendo. Mal sabíamos que estávamos escrevendo o primeiro capítulo da nossa história de amor.</p>
-                        </div>
-                    </div>
-        
-                    <div class="historia-bloco inverso">
-                        <div class="texto-historia">
-                            <h3>Crescendo juntos – Namoro</h3>
-                            <p class="texto-italico" style="color: #ce6a84;">"O amor é construído dia a dia, com carinho, respeito e muitas aventuras juntos."</p>
-                            <p>Com o tempo, percebemos que aquilo que sentíamos ia muito além de uma amizade. Era amor, daqueles que aquecem o coração e tornam qualquer momento especial. Juntos, passamos por desafios, aprendemos um com o outro e vivemos experiências incríveis. O namoro nos trouxe maturidade e ainda mais certeza de que éramos feitos um para o outro.</p>
-                        </div>
-                        <img src="Imagens/Sobre/IMG_7194.jpg" class="imagem-historia" alt="Foto do casal">
-                    </div>
-        
-                    <div class="historia-bloco">
-                        <img src="Imagens/Sobre/IMG_6764.jpg" class="imagem-historia" alt="Foto do casal">
-                        <div class="texto-historia">
-                            <h3>O próximo passo – Casamento</h3>
-                            <p class="texto-italico" style="color: #ce6a84;">"O começo do nosso 'para sempre'."</p>
-                            <p>Depois de tantos momentos vividos, chegou a hora de dar um novo passo. O casamento é o símbolo do nosso compromisso, da nossa união e do amor que construímos ao longo dos anos. Estamos animados para celebrar esse momento com aqueles que mais amamos e iniciar essa nova fase das nossas vidas, juntos, como sempre sonhamos.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>              
-    
-        <section id="cerimonia">
-            <div class="conteudo-cerimonia">
-                <p class="titulo-cerimonia">CERIMÔNIA</p>
-        
-                <div class="aviso-traje">
-                    <p class="aviso-texto">Queridos amigos e familiares,<br><br>Nossa cerimônia acontecerá no fim da tarde, um momento especial para celebrarmos o amor e a união. Para tornar esse dia ainda mais harmonioso, pedimos que todos se vistam de forma elegante. Abaixo, compartilhamos algumas orientações para que todos estejam alinhados ao estilo do casamento:</p>
-                    <div class="bloco-restrito">
-                        <h3 class="titulo-restrito">Evite utilizar as seguintes cores de vestimentas:</h3>
-                        <div class="bolas-container">
-                            <div class="bola" style="background-color: white;"></div>
-                            <div class="bola" style="background-color: #000080;"></div>
-                            <div class="bola" style="background-color: #7E8484;"></div>
-                            <div class="bola" style="background-color: #556B2F;"></div>
-                            <div class="bola" style="background-color: #D9D9D9;"></div>
-                            <div class="bola" style="background-color: #93CBFF; border: 1px solid #ccc;"></div>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="bloco-cerimonia">
-                    <p class="traje-descricao">Confira as cores ideais para você no dia!</p>
-        
-                    <div class="slider-container">
-                        <button class="prev-btn">&#10094;</button>
-                        <div class="paletas-container">
-        
-                            <div class="bl-cr1 active">
-                                <img src="Imagens/Cerimônia/Noiva.jpeg" class="imagem-slide" alt="Noiva">
-                                <h3 class="titulo-especial">Noiva</h3>
-                                <div class="bolas-container">
-                                    <div class="bola" style="background-color: white;"></div>
-                                </div>
-                                <p class="descricao-paleta">Branco</p>
-                            </div>
-        
-                            <div class="bl-cr1">
-                                <img src="Imagens/Cerimônia/Noivo.jpeg" class="imagem-slide" alt="Noivo">
-                                <h3 class="titulo-paleta">Noivo</h3>
-                                <div class="bolas-container">
-                                    <div class="bola" style="background-color: #000080;"></div>
-                                </div>
-                                <p class="descricao-paleta">Azul Marinho</p>
-                            </div>
-        
-                            <div class="bl-cr1">
-                                <img src="Imagens/Cerimônia/Pais.jpeg" class="imagem-slide" alt="Pais dos noivos">
-                                <h3 class="titulo-paleta">Pais dos noivos</h3>
-                                <div class="bolas-container">
-                                    <div class="bola" style="background-color: #7E8484;"></div>
-                                </div>
-                                <p class="descricao-paleta">Cinza Escuro</p>
-                            </div>
+    <section id="lista-de-presentes">
+      <p class="titulo-lista">COMPRAR PRESENTE<p>
+      <p>Veja nossa lista de presentes online e escolha um mimo especial para o casal.</p>
+      <div class="presentes-container">
+          <div class="presente-item">
+            <img src="Imagens/Ensaio/favacho-49.jpg" alt="Lista 1">
+            <h3>Lua de Mel</h3>
+            <button onclick="window.open('https://ciceliane-matheus.github.io/casamento/luademel.html')">Presentear</button>
+          </div>
+          <div class="presente-item">
+            <img src="Imagens/Lista de Presente/Havan.png" alt="Lista 2">
+            <h3>Havan</h3>
+            <button onclick="window.open('https://lista.havan.com.br/Convidado/ItensListaPresente/812831')">Presentear</button>
+          </div>
+          <div class="presente-item">
+            <img src="Imagens/Lista de Presente/Bemol.png" alt="Lista 3">
+            <h3>Bemol</h3>
+            <button onclick="window.open('http://chat.bemol.com.br/cicelianematheus21')">Presentear</button>
+          </div>
+      </div>
+  </section>
 
-                            <div class="bl-cr1">
-                                <img src="Imagens/Cerimônia/Mães.jpeg" class="imagem-slide" alt="Mães dos noivos">
-                                <h3 class="titulo-paleta">Mães dos noivos</h3>
-                                <div class="bolas-container">
-                                    <div class="bola" style="background-color: #556B2F;"></div>
-                                </div>
-                                <p class="descricao-paleta">Verde</p>
-                            </div>
+    <!-- Seção RSVP -->
+    <section id="rsvp">
+      <h2>CONFIRME SUA PRESENÇA</h2>
+      <form id="rsvp-form">
 
-                            <div class="bl-cr1">
-                                <img src="Imagens/Cerimônia/Padrinhos.png" class="imagem-slide" alt="Padrinhos">
-                                <h3 class="titulo-paleta">Padrinhos</h3>
-                                <div class="bolas-container">
-                                    <div class="bola" style="background-color: #D9D9D9;"></div>
-                                </div>
-                                <p class="descricao-paleta">Cinza Claro</p>
-                            </div>
+        <label>Você vai comparecer?</label>
+        <select name="presenca" id="presenca" required>
+          <option value="">Selecione...</option>
+          <option value="Sim">Sim</option>
+          <option value="Não">Não</option>
+        </select>
 
-                            <div class="bl-cr1">
-                                <img src="Imagens/Cerimônia/Madrinhas.jpg" class="imagem-slide" alt="Madrinhas">
-                                <h3 class="titulo-paleta">Madrinhas</h3>
-                                <div class="bolas-container">
-                                    <div class="bola" style="background-color: #93CBFF;"></div>
-                                </div>
-                                <p class="descricao-paleta">Tons de Azul</p>
-                            </div>
+        <label>Nome:</label>
+          <select name="nome" id="nome" required>
+            <option value="">Selecione o seu nome</option>
+            <option value="Maria Santos">Maria Santos</option>
+            <option value="José Santos">José Santos</option>
+            <option value="Cícero Pereira">Cícero Pereira</option>
+            <option value="Angela Oliveira">Angela Oliveira</option>
+        </select>
 
-                            <div class="bl-cr1">
-                                <img src="Imagens/Cerimônia/Convidados.jpg" class="imagem-slide" alt="Convidados">
-                                <h3 class="titulo-paleta">Convidados</h3>
-                                <div class="bolas-container">
-                                    <div class="bola" style="background-color: #C45824;"></div>
-                                    <div class="bola" style="background-color: #5D001E;"></div>
-                                    <div class="bola" style="background-color: black;"></div>
-                                </div>
-                                <p class="descricao-paleta">Tons sofisticados e elegantes.</p>
-                            </div>
-                        </div>
-                        <button class="next-btn">&#10095;</button>
-                    </div>
-                </div>
-            </div>
-        </section>              
+        <label>Quantidade de acompanhantes:</label>
+        <select name="acompanhantes" id="quantidade_acompanhantes">
+          <option value="0">Nenhum</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+        <div id="acompanhantes-container"></div>
 
-        <section id="recepcao">
-            <p class="titulo-recepcao1">RECEPÇÃO</p>
-            <div class="recepcao-container">
-                <div class="recepcao-header">
-                    <img src="Imagens/Recepção/Local.png" alt="Local da recepção" class="imagem-recepcao">
-                    <div class="detalhes-recepcao">
-                        <h2 class="titulo-recepcao">O grande dia!</h2>
-                        <p class="endereco-recepcao">
-                            Chácara Monte Rey<br>Nº 450, Vila Tredecim - Tarumã Açu<br>Manaus - AM
-                        </p>
-                        <div class="icone-localizacao">
-                            <i data-lucide="map-pin"></i>
-                        </div>
-                    </div>
-                </div>
+        <label>Telefone:</label>
+        <input type="paleta_cores" name="paleta_cores" id="paleta_cores" placeholder="(00) 00000-0000" required>
 
-                <script>
-                    lucide.createIcons();
-                </script>
-        
-                <div class="linha-tempo">
-                    <div class="evento">
-                        <span class="horario"><img src="Imagens/Recepção/church_6535298.png" alt=""></span>
-                        <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
-                        <span class="descricao"><b>16h00</b><br>Início da Cerimônia</span>
-                    </div>
-        
-                    <div class="evento">
-                        <span class="descricao"><b>17h30</b><br>Sessão de Fotos</span>
-                        <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
-                        <span class="horario"><img src="Imagens/Recepção/camera_16494636.png" alt=""></span>
-                    </div>
-        
-                    <div class="evento">
-                        <span class="horario"><img src="Imagens/Recepção/waiter_473336.png" alt=""></span>
-                        <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
-                        <span class="descricao"><b>18h00</b><br>Liberação do Buffet</span>
-                    </div>
-        
-                    <div class="evento">
-                        <span class="descricao"><b>19h30</b><br>Noivos na Pista!</span>
-                        <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
-                        <span class="horario"><img src="Imagens/Recepção/dance_3074317.png" alt=""></span>
-                    </div>
+        <label>Observações:</label>
+        <textarea name="observacoes2" id="observacoes"></textarea>
 
-                    <div class="evento">
-                        <span class="descricao"><b>20h00</b><br>Festa Liberada!</span>
-                        <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
-                        <span class="horario"><img src="Imagens/Recepção/dance_1997669.png" alt=""></span>
-                    </div>
+        <button type="submit">Enviar</button>
+      </form>
 
-                    <div class="evento">
-                        <span class="descricao"><b>22h30</b><br>Encerramento</span>
-                        <div class="icone-evento"><img src="Imagens/Recepção/heart_8820011.png" alt=""></div>
-                        <span class="horario"><img src="Imagens/Recepção/thank-you_5486257.png" alt=""></span>
-                    </div>
-                </div>
-            </div>
-        </section>        
-
-        <section id="lista-de-presentes">
-            <p class="titulo-lista">COMPRAR PRESENTE<p>
-            <p>Veja nossa lista de presentes online e escolha um mimo especial para o casal.</p>
-            <div class="presentes-container">
-                <div class="presente-item">
-                    <img src="Imagens/Geral/Bemol.png" alt="Presente 1">
-                    <h3>Bemol</h3>
-                    <p>Agrade o noivo</p>
-                    <button onclick="window.open('http://chat.bemol.com.br/cicelianematheus21')"> Presentear</button>
-                </div>
-                <div class="presente-item">
-                    <img src="Imagens/Geral/Havan.png" alt="Presente 2">
-                    <h3>Havan</h3>
-                    <p>Agrade a noiva</p>
-                    <button onclick="window.open('https://lista.havan.com.br/Convidado/ItensListaPresente/812831')"> Presentear</button>
-                </div>
-                <div class="presente-item">
-                    <img src="Imagens/Lua de Mel/luademel.jpg" alt="Presente 2">
-                    <h3>Lua de Mel</h3>
-                    <p>Ajude nessa missão!</p>
-                    <button onclick="window.open('https://ciceliane-matheus.github.io/casamento/luademel.html')"> Presentear</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="rsvp">
-            <h2>CONFIRME SUA PRESENÇA</h2>
-        
-            <p style="color: #d8335f; font-weight: normal;">
-                * O preenchimento deste formulário não garante a confirmação da sua presença.<br>* Você receberá uma mensagem no WhatsApp para validação final.<br>  
-                * A quantidade de acompanhantes está sujeita à aprovação.
-            </p>    
-        
-            <form id="rsvp-form">
-                <label>Nome:</label>
-                <input type="text" name="nome" id="nome" required>
-        
-                <label>Você vai comparecer?</label>
-                <select name="presenca" id="presenca" required>
-                    <option value="">Selecione...</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
-                </select>
-        
-                <label>Quantidade de acompanhantes:</label>
-                <select name="acompanhantes" id="quantidade_acompanhantes">
-                    <option value="0">Nenhum</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-        
-                <div id="acompanhantes-container"></div>
-        
-                <label>Insira seu contato:</label>
-                <input type="tel" name="tel" id="tel" placeholder="(xx) xxxxx-xxxx" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" required>
-        
-                <label>Informe a paleta de cores que você irá usar:</label>
-                <select name="paleta_cores" id="paleta_cores" required>
-                    <option value="">Selecione...</option>
-                    <option value="Padrinho/Madrinha">Padrinho/Madrinha</option>
-                    <option value="Pai/Mãe do noivo(a)">Pai/Mãe do noivo(a)</option>
-                    <option value="Caramelo">Caramelo</option>
-                    <option value="Marrom">Marrom</option>
-                    <option value="Terracota">Terracota</option>
-                    <option value="Rosê">Rosê</option>
-                    <option value="Rosa">Rosa</option>
-                    <option value="Bordô">Bordô</option>
-                    <option value="Salmão">Salmão</option>
-                    <option value="Vinho">Vinho</option>
-                    <option value="Uva">Uva</option>
-                    <option value="Ameixa">Ameixa</option>
-                    <option value="Lilás">Lilás</option>
-                    <option value="Preto">Preto</option>
-                    <option value="Outros">Outros (adicione nas observações)</option>
-                </select>
-        
-                <label>Observações:</label>
-                <textarea name="observacoes2" id="observacoes"></textarea>
-        
-                <button type="submit">Enviar</button>
-            </form>
-        
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
         
             <script>
                 $(document).ready(function(){
-                    $('#tel').mask('(00) 00000-0000');
+                    $('#paleta_cores').mask('(00) 00000-0000');
         
                     $('#quantidade_acompanhantes').change(function() {
                         var qtd = $(this).val();
@@ -435,7 +308,6 @@
                         .then(response => response.json())
                         .then(data => {
                             alert('Formulário enviado com sucesso! Aguarde a confirmação via WhatsApp.');
-                            window.location.href = "https://ciceliane-matheus.github.io/casamento/sucesso.html"; // Redireciona após envio
                         })
                         .catch(error => {
                             console.error('Erro:', error);
@@ -444,15 +316,38 @@
                     });
                 });
             </script>
-        </section>
-        
-    </div>
-        
-    </main>
 
-    <footer>
-        <p></p>
-    </footer>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Ciceliane Avente</h3>
+        <div class="social-icons">
+          <a href="https://wa.me/5592993752474" target="_blank" class="whatsapp-icon">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.instagram.com/ciceliane?igsh=M3Bxc3lmdWhxdmhl&utm_source=qr" target="_blank" class="instagram-icon">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Matheus Santos</h3>
+        <div class="social-icons">
+          <a href="https://wa.me/5592993171524" target="_blank" class="whatsapp-icon">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.instagram.com/matheus.z_/profilecard/?igsh=MWF3eWRsOXl1NWd1cg==" target="_blank" class="instagram-icon">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
